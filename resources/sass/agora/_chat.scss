@@ -1,0 +1,26 @@
+
+.agora-chat {
+    height: 100%;
+
+    .agora-chat-box {
+        height: calc(100vh - 233px);
+        overflow-y: auto;
+    }
+
+    .send-message-btn {
+        width: 34px !important;
+        height: 34px !important;
+    }
+}
+
+.agora-users {
+    height: calc(100vh - 137px);
+    overflow-y: auto;
+}
+
+.user-card {
+    .avatar {
+        width: 40px;
+        height: 40px;
+    }
+}

@@ -1,0 +1,240 @@
+@import "./../bootstrap/variables";
+
+html {
+    overflow: hidden;
+}
+
+body {
+    height: 100vh;
+}
+
+
+.learning-page {
+
+    .learning-page-navbar {
+
+        .learning-page-progress-card {
+            border-left: 1px solid $gray-200;
+            padding-left: 10px;
+            margin-left: 10px;
+        }
+
+        @media (max-width: $screen-sm-max) {
+            max-height: 162px;
+            overflow: hidden;
+
+            .learning-page-navbar-title {
+                height: 37px;
+                overflow: hidden;
+            }
+
+            .learning-page-logo-card {
+                width: 100%;
+            }
+
+            .learning-page-progress-card {
+                border-top: 1px solid $gray-200;
+                padding-top: 10px;
+                margin-top: 10px;
+                border-left: 0;
+                padding-left: 0;
+                margin-left: 0;
+            }
+        }
+
+        .learning-page-navbar-btn {
+            color: $black;
+            background-color: #FFFFFF;
+
+            &:hover {
+                background-color: $gray-200;
+            }
+        }
+
+        .course-progress {
+            width: 465px;
+            height: 11px;
+            padding: 0 2px;
+
+            .progress-bar {
+                height: 5px;
+            }
+
+            @media (max-width: $screen-xs-max) {
+                width: 80%;
+            }
+        }
+    }
+
+    .learning-page-tabs {
+        width: 70px;
+        height: 100vh;
+        transition: all .3s ease;
+
+        @media (max-width: $screen-sm-max) {
+            position: absolute;
+            right: -200px;
+            bottom: 0;
+            top: 15px;
+            background-color: #fff;
+            border-left: 1px solid $gray-200;
+        }
+
+        .learning-page-tabs-icons {
+            width: 20px;
+            height: 20px;
+
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .learning-page-tabs-link-text, .tab-content {
+            display: none;
+            transition: all .4s ease;
+        }
+
+        &.show {
+            width: 373px;
+            right: 0;
+
+            @media (max-width: $screen-xs-max) {
+                width: 100vw;
+            }
+
+            .learning-page-tabs-link-text, .tab-content {
+                display: block;
+            }
+        }
+
+        &:not(.show) {
+            .nav-tabs {
+                flex-direction: column;
+
+                .nav-item {
+                    margin-top: 20px;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+
+                    a {
+                        &:after {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .content-tab {
+            height: calc(100vh - 120px);
+            overflow-y: auto;
+
+            @media (max-width: $screen-sm-max) {
+                height: calc(100vh - 200px);
+            }
+        }
+
+        .tab-item, .certificate-item {
+
+            &.active {
+                background-color: $gray-200;
+            }
+
+            .tab-item-info {
+                display: none;
+            }
+        }
+    }
+
+    .learning-content {
+        width: 100%;
+        height: calc(100vh - 100px);
+        background-color: #FFFFFF;
+        border-radius: 10px;
+        overflow-y: auto;
+
+        .learning-content-loading {
+            img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        .learning-content-box {
+            border: dashed 1px $gray-300;
+
+            @media (min-width: $screen-sm-max) {
+                min-width: 500px;
+            }
+        }
+
+        .learning-content-video-player {
+            height: calc(100vh - 100px);
+
+            .video-js {
+                height: 100% !important;
+            }
+
+            .vimeoFrame {
+                height: 100% !important;
+                padding-bottom: 0 !important;
+
+                .vimeoplayer {
+                    position: static !important;
+                    height: 100% !important;
+                }
+            }
+        }
+
+        .text-lesson-content {
+
+            p, span {
+                color: $gray !important;
+                margin-top: 15px !important;
+            }
+
+            .main-image {
+                max-height: 450px;
+            }
+
+            img {
+                border-radius: 15px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            h1, h2, h3 {
+                font-size: 20px !important;
+                font-weight: bold !important;
+                color: $dark-blue !important;
+                margin-top: 25px !important;
+            }
+        }
+
+        @media (max-width: $screen-sm-max) {
+            height: calc(100vh - 177px);
+
+            .learning-content-video-player {
+                height: calc(100vh - 177px);
+            }
+        }
+    }
+
+    .learning-content-iframe {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+
+        iframe, .h_iframe-aparat_embed_frame {
+            width: 100%;
+            height: 100%;
+        }
+
+        .h_iframe-aparat_embed_frame > span {
+            display: none !important;
+        }
+    }
+}
