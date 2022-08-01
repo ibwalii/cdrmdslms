@@ -33,3 +33,8 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+
+# Ignore video files
+*.mp4
+*.mkv
+*.flv
