@@ -245,9 +245,7 @@
                                         <th>{{trans('admin/main.id')}}</th>
                                         <th class="text-left">{{trans('admin/main.title')}}</th>
                                         <th class="text-left">{{trans('admin/main.instructor')}}</th>
-                                        {{-- <th>{{trans('admin/main.price')}}</th> --}}
                                         <th>{{ "Students"}}</th>
-                                        
                                         <th>{{trans('admin/main.created_at')}}</th>
                                         @if($classesType == 'webinar')
                                             <th>{{trans('admin/main.start_date')}}</th>
@@ -272,19 +270,6 @@
 
                                             <td class="text-left">{{ $webinar->teacher->full_name }}</td>
 
-                                            {{-- <td>
-                                                @if(!empty($webinar->price) and $webinar->price > 0)
-                                                    <span class="mt-0 mb-1">
-                                                        {{ handlePrice($webinar->price, true, true) }}
-                                                    </span>
-
-                                                    @if($webinar->getDiscountPercent() > 0)
-                                                        <div class="text-danger text-small font-600-bold">{{ $webinar->getDiscountPercent() }}% {{trans('admin/main.off')}}</div>
-                                                    @endif
-                                                @else
-                                                    {{ trans('public.free') }}
-                                                @endif
-                                            </td> --}}
                                             <td>
                                                 <span class="text-primary mt-0 mb-1 font-weight-bold">
                                                     {{ $webinar->sales->count() }}
@@ -294,8 +279,6 @@
                                                     <div class="text-small font-600-bold">{{trans('admin/main.capacity')}} : {{ $webinar->getWebinarCapacity() }}</div>
                                                 @endif
                                             </td>
-
-                                            {{-- <td>{{ addCurrencyToPrice($webinar->sales->sum('amount')) }}</td> --}}
 
                                             <td class="font-12">{{ dateTimeFormat($webinar->created_at, 'Y M j | H:i') }}</td>
 
