@@ -539,13 +539,14 @@
                             </div>
                         </div>
                     </div>
-    @endcan -->
+        @endcan -->
         @can('admin_general_dashboard_sales_statistics_chart')
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>{{ trans('admin/main.sales_statistics') }}</h4>
+                            
+                            <h4>Student Enrollment</h4>
                             <div class="card-header-action">
                                 <div class="btn-group">
                                     <button type="button"
@@ -566,74 +567,7 @@
 
                             <div class="row">
                                 <div class="col-12">
-                                    @if (!empty($getMonthAndYearSalesChartStatistics))
-                                        <div class="statistic-details mt-4 position-relative">
-                                            <div class="statistic-details-item">
-                                                <span class="text-muted">
-                                                    @if ($getMonthAndYearSalesChartStatistics['todaySales']['grow_percent']['status'] == 'up')
-                                                        <span class="text-primary"><i class="fas fa-caret-up"></i></span>
-                                                    @else
-                                                        <span class="text-danger"><i class="fas fa-caret-down"></i></span>
-                                                    @endif
-
-                                                    {{ $getMonthAndYearSalesChartStatistics['todaySales']['grow_percent']['percent'] }}
-                                                </span>
-
-                                                <div class="detail-value">
-                                                    {{ addCurrencyToPrice($getMonthAndYearSalesChartStatistics['todaySales']['amount']) }}
-                                                </div>
-                                                <div class="detail-name">{{ trans('admin/main.today_sales') }}</div>
-                                            </div>
-                                            <div class="statistic-details-item">
-                                                <span class="text-muted">
-                                                    @if ($getMonthAndYearSalesChartStatistics['weekSales']['grow_percent']['status'] == 'up')
-                                                        <span class="text-primary"><i class="fas fa-caret-up"></i></span>
-                                                    @else
-                                                        <span class="text-danger"><i class="fas fa-caret-down"></i></span>
-                                                    @endif
-
-                                                    {{ $getMonthAndYearSalesChartStatistics['weekSales']['grow_percent']['percent'] }}
-                                                </span>
-
-                                                <div class="detail-value">
-                                                    {{ addCurrencyToPrice($getMonthAndYearSalesChartStatistics['weekSales']['amount']) }}
-                                                </div>
-                                                <div class="detail-name">{{ trans('admin/main.week_sales') }}</div>
-                                            </div>
-                                            <div class="statistic-details-item">
-                                                <span class="text-muted">
-                                                    @if ($getMonthAndYearSalesChartStatistics['monthSales']['grow_percent']['status'] == 'up')
-                                                        <span class="text-primary"><i class="fas fa-caret-up"></i></span>
-                                                    @else
-                                                        <span class="text-danger"><i class="fas fa-caret-down"></i></span>
-                                                    @endif
-
-                                                    {{ $getMonthAndYearSalesChartStatistics['monthSales']['grow_percent']['percent'] }}
-                                                </span>
-
-                                                <div class="detail-value">
-                                                    {{ addCurrencyToPrice($getMonthAndYearSalesChartStatistics['monthSales']['amount']) }}
-                                                </div>
-                                                <div class="detail-name">{{ trans('admin/main.month_sales') }}</div>
-                                            </div>
-                                            <div class="statistic-details-item">
-                                                <span class="text-muted">
-                                                    @if ($getMonthAndYearSalesChartStatistics['yearSales']['grow_percent']['status'] == 'up')
-                                                        <span class="text-primary"><i class="fas fa-caret-up"></i></span>
-                                                    @else
-                                                        <span class="text-danger"><i class="fas fa-caret-down"></i></span>
-                                                    @endif
-
-                                                    {{ $getMonthAndYearSalesChartStatistics['yearSales']['grow_percent']['percent'] }}
-                                                </span>
-
-                                                <div class="detail-value">
-                                                    {{ addCurrencyToPrice($getMonthAndYearSalesChartStatistics['yearSales']['amount']) }}
-                                                </div>
-                                                <div class="detail-name">{{ trans('admin/main.year_sales') }}</div>
-                                            </div>
-                                        </div>
-                                    @endif
+                                   
                                 </div>
                             </div>
                         </div>
@@ -654,15 +588,16 @@
         (function($) {
             "use strict";
 
+            @if (!empty($usersStatisticsChart))
+                makeStatisticsChart('usersStatisticsChart', usersStatisticsChart, 'Users', @json($usersStatisticsChart['labels']),
+                    @json($usersStatisticsChart['data']));
+            @endif
+
             @if (!empty($getMonthAndYearSalesChart))
                 makeStatisticsChart('saleStatisticsChart', saleStatisticsChart, 'Sale', @json($getMonthAndYearSalesChart['labels']),
                     @json($getMonthAndYearSalesChart['data']));
             @endif
 
-            @if (!empty($usersStatisticsChart))
-                makeStatisticsChart('usersStatisticsChart', usersStatisticsChart, 'Users', @json($usersStatisticsChart['labels']),
-                    @json($usersStatisticsChart['data']));
-            @endif
 
         })(jQuery)
     </script>
