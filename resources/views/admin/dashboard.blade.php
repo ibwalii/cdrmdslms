@@ -130,7 +130,7 @@
                 @endcan
             </div> -->
 
-            <div class="col-lg-6 col-md-6 col-sm-12">
+            {{-- <div class="col-lg-6 col-md-6 col-sm-12">
                 @can('admin_general_dashboard_total_sales_statistics')
                     @if(!empty($getTotalSalesStatistics))
                         <div class="card card-statistic-2">
@@ -168,7 +168,7 @@
                         </div>
                     @endif
                 @endcan
-            </div>
+            </div> --}}
         </div>
 
         <div class="row">

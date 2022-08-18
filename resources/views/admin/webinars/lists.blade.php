@@ -73,7 +73,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                         <div class="card card-statistic-1">
                             <div class="card-icon bg-info">
-                                <i class="fas fa-dollar-sign"></i>
+                                <i class="fas fa-clock"></i>
                             </div>
 
                             <div class="card-wrap">
@@ -94,7 +94,10 @@
                             <i class="fas fa-users"></i></div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>{{trans('admin/main.total_sales')}}</h4>
+                                <h4>
+                                    {{-- {{trans('admin/main.total_sales')}} --}}
+                                    Total Students
+                                </h4>
                             </div>
                             <div class="card-body">
                                 {{ $totalSales }}
@@ -242,9 +245,9 @@
                                         <th>{{trans('admin/main.id')}}</th>
                                         <th class="text-left">{{trans('admin/main.title')}}</th>
                                         <th class="text-left">{{trans('admin/main.instructor')}}</th>
-                                        <th>{{trans('admin/main.price')}}</th>
-                                        <th>{{trans('admin/main.sales')}}</th>
-                                        <th>{{trans('admin/main.income')}}</th>
+                                        {{-- <th>{{trans('admin/main.price')}}</th> --}}
+                                        <th>{{ "Students"}}</th>
+                                        
                                         <th>{{trans('admin/main.created_at')}}</th>
                                         @if($classesType == 'webinar')
                                             <th>{{trans('admin/main.start_date')}}</th>
@@ -269,7 +272,7 @@
 
                                             <td class="text-left">{{ $webinar->teacher->full_name }}</td>
 
-                                            <td>
+                                            {{-- <td>
                                                 @if(!empty($webinar->price) and $webinar->price > 0)
                                                     <span class="mt-0 mb-1">
                                                         {{ handlePrice($webinar->price, true, true) }}
@@ -281,7 +284,7 @@
                                                 @else
                                                     {{ trans('public.free') }}
                                                 @endif
-                                            </td>
+                                            </td> --}}
                                             <td>
                                                 <span class="text-primary mt-0 mb-1 font-weight-bold">
                                                     {{ $webinar->sales->count() }}
@@ -292,7 +295,7 @@
                                                 @endif
                                             </td>
 
-                                            <td>{{ addCurrencyToPrice($webinar->sales->sum('amount')) }}</td>
+                                            {{-- <td>{{ addCurrencyToPrice($webinar->sales->sum('amount')) }}</td> --}}
 
                                             <td class="font-12">{{ dateTimeFormat($webinar->created_at, 'Y M j | H:i') }}</td>
 
