@@ -56,9 +56,10 @@
                 <div class="form-group">
                     <label class="input-label">{{ trans('public.accessibility') }}</label>
                     <select class="custom-select" name="accessibility">
-                        <option selected disabled>{{ trans('public.choose_accessibility') }}</option>
-                        <option value="free">{{ trans('public.free') }}</option>
-                        <option value="paid">{{ trans('public.paid') }}</option>
+                        {{-- <option selected disabled>{{ trans('public.choose_accessibility') }} </option> --}}
+                        <option selected disabled>Choose </option>
+                        <option value="free">Everyone</option>
+                        
                     </select>
                     <div class="invalid-feedback"></div>
                 </div>
