@@ -463,7 +463,7 @@
                                 </section>
 
                                 @if(!empty($webinar))
-                                    <section class="mt-30">
+                                    {{-- <section class="mt-30">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <h2 class="section-title after-line">{{ trans('admin/main.price_plans') }}</h2>
                                             <button id="webinarAddTicket" type="button" class="btn btn-primary btn-sm mt-3">{{ trans('admin/main.add_price_plan') }}</button>
@@ -511,7 +511,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                    </section>
+                                    </section> --}}
 
                                     <section class="mt-30">
                                         <div class="d-flex justify-content-between align-items-center">
