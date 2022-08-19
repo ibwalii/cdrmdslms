@@ -463,55 +463,6 @@
                                 </section>
 
                                 @if(!empty($webinar))
-                                    {{-- <section class="mt-30">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h2 class="section-title after-line">{{ trans('admin/main.price_plans') }}</h2>
-                                            <button id="webinarAddTicket" type="button" class="btn btn-primary btn-sm mt-3">{{ trans('admin/main.add_price_plan') }}</button>
-                                        </div>
-
-                                        <div class="row mt-10">
-                                            <div class="col-12">
-
-                                                @if(!empty($tickets) and !$tickets->isEmpty())
-                                                    <div class="table-responsive">
-                                                        <table class="table table-striped text-center font-14">
-
-                                                            <tr>
-                                                                <th>{{ trans('public.title') }}</th>
-                                                                <th>{{ trans('public.discount') }}</th>
-                                                                <th>{{ trans('public.capacity') }}</th>
-                                                                <th>{{ trans('public.date') }}</th>
-                                                                <th></th>
-                                                            </tr>
-
-                                                            @foreach($tickets as $ticket)
-                                                                <tr>
-                                                                    <th scope="row">{{ $ticket->title }}</th>
-                                                                    <td>{{ $ticket->discount }}%</td>
-                                                                    <td>{{ $ticket->capacity }}</td>
-                                                                    <td>{{ dateTimeFormat($ticket->start_date,'j F Y') }} - {{ (new DateTime())->setTimestamp($ticket->end_date)->format('j F Y') }}</td>
-                                                                    <td>
-                                                                        <button type="button" data-ticket-id="{{ $ticket->id }}" data-webinar-id="{{ !empty($webinar) ? $webinar->id : '' }}" class="edit-ticket btn-transparent text-primary mt-1" data-toggle="tooltip" data-placement="top" title="{{ trans('admin/main.edit') }}">
-                                                                            <i class="fa fa-edit"></i>
-                                                                        </button>
-
-                                                                        @include('admin.includes.delete_button',['url' => '/admin/tickets/'. $ticket->id .'/delete', 'btnClass' => ' mt-1'])
-                                                                    </td>
-                                                                </tr>
-                                                            @endforeach
-
-                                                        </table>
-                                                    </div>
-                                                @else
-                                                    @include('admin.includes.no-result',[
-                                                        'file_name' => 'ticket.png',
-                                                        'title' => trans('public.ticket_no_result'),
-                                                        'hint' => trans('public.ticket_no_result_hint'),
-                                                    ])
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </section> --}}
 
                                     <section class="mt-30">
                                         <div class="d-flex justify-content-between align-items-center">
