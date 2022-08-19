@@ -675,7 +675,7 @@
                                                                                 <span class="text-dark">{{ trans('admin/main.no') }}</span>
                                                                             @endif
                                                                         </td>
-                                                                        <td>{{ $textLesson->accessibility }}</td>
+                                                                        <td>Everyone</td>
                                                                         <th>{{ trans('admin/main.'.$textLesson->status) }}</th>
                                                                         <td>
                                                                             <button type="button" data-text-id="{{ $textLesson->id }}" data-webinar-id="{{ !empty($webinar) ? $webinar->id : '' }}" class="edit-test-lesson btn-transparent text-primary mt-1" data-toggle="tooltip" data-placement="top" title="{{ trans('admin/main.edit') }}">
