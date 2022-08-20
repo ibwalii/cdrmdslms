@@ -179,10 +179,11 @@
                     <tr>
                         <th>{{ trans('admin/main.id') }}</th>
                         <th>{{ trans('admin/main.name') }}</th>
-                        <th>{{ trans('admin/main.classes_sales') }}</th>
-                        <th>{{ trans('admin/main.appointments_sales') }}</th>
+                        <th>Courses</th>
+                        {{-- <th>{{ trans('admin/main.classes_sales') }}</th> --}}
+                        {{-- <th>{{ trans('admin/main.appointments_sales') }}</th>
                         <th>{{ trans('admin/main.purchased_classes') }}</th>
-                        <th>{{ trans('admin/main.purchased_appointments') }}</th>
+                        <th>{{ trans('admin/main.purchased_appointments') }}</th> --}}
                         <th>{{ trans('admin/main.instructors') }}</th>
                         <th>{{ trans('admin/main.students') }}</th>
                         <th>{{ trans('admin/main.register_date') }}</th>
@@ -216,10 +217,10 @@
                             <td>
                                 <div class="media-body">
                                     <div class="text-primary mt-0 mb-1 font-weight-bold">{{ $user->classesSalesCount }}</div>
-                                    <div class="text-small font-600-bold">{{ $currency }}{{ number_format($user->classesSalesSum, 2, ".", "")+0 }}</div>
+                                    {{-- <div class="text-small font-600-bold">{{ $currency }}{{ number_format($user->classesSalesSum, 2, ".", "")+0 }}</div> --}}
                                 </div>
                             </td>
-                            <td>
+                            {{-- <td>
                                 <div class="media-body">
                                     <div class="text-primary mt-0 mb-1 font-weight-bold">{{ $user->meetingsSalesCount }}</div>
                                     <div class="text-small font-600-bold">{{ $currency }}{{ number_format($user->meetingsSalesSum, 2, ".", "")+0 }}</div>
@@ -236,7 +237,7 @@
                                     <div class="text-primary mt-0 mb-1 font-weight-bold">{{ $user->meetingsPurchasedsCount }}</div>
                                     <div class="text-small font-600-bold">{{ $currency }}{{ number_format($user->meetingsPurchasedsSum, 2, ".", "")+0 }}</div>
                                 </div>
-                            </td>
+                            </td> --}}
                             <td class="text-primary mt-0 mb-1 font-weight-bold">{{ $user->getOrganizationTeachers()->count() }}</td>
                             <td class="text-primary mt-0 mb-1 font-weight-bold">{{ $user->getOrganizationStudents()->count() }}</td>
 
