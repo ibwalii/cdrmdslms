@@ -191,12 +191,6 @@
                     <tr>
                         <th>{{ trans('admin/main.id') }}</th>
                         <th>{{ trans('admin/main.name') }}</th>
-                        {{-- <th>{{ trans('admin/main.classes_sales') }}</th>
-                        <th>{{ trans('admin/main.appointments_sales') }}</th>
-                        <th>{{ trans('admin/main.purchased_classes') }}</th>
-                        <th>{{ trans('admin/main.purchased_appointments') }}</th>
-                        <th>{{ trans('admin/main.wallet_charge') }}</th>
-                        <th>{{ trans('admin/main.user_group') }}</th> --}}
                         <th>{{ trans('admin/main.register_date') }}</th>
                         <th>{{ trans('admin/main.status') }}</th>
                         <th width="120">{{ trans('admin/main.actions') }}</th>
@@ -224,36 +218,6 @@
                                     </div>
                                 </div>
                             </td>
-                            {{-- <td>
-                                <div class="media-body">
-                                    <div class="text-primary mt-0 mb-1 font-weight-bold">{{ $user->classesSalesCount }}</div>
-                                    <div class="text-small font-600-bold">{{ addCurrencyToPrice(handlePriceFormat($user->classesSalesSum)) }}</div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="media-body">
-                                    <div class="text-primary mt-0 mb-1 font-weight-bold">{{ $user->meetingsSalesCount }}</div>
-                                    <div class="text-small font-600-bold">{{ addCurrencyToPrice(handlePriceFormat($user->meetingsSalesSum)) }}</div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="media-body">
-                                    <div class="text-primary mt-0 mb-1 font-weight-bold">{{ $user->classesPurchasedsCount }}</div>
-                                    <div class="text-small font-600-bold">{{ addCurrencyToPrice(handlePriceFormat($user->classesPurchasedsSum)) }}</div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="media-body">
-                                    <div class="text-primary mt-0 mb-1 font-weight-bold">{{ $user->meetingsPurchasedsCount }}</div>
-                                    <div class="text-small font-600-bold">{{ addCurrencyToPrice(handlePriceFormat($user->meetingsPurchasedsSum)) }}</div>
-                                </div>
-                            </td>
-
-                            <td>{{ addCurrencyToPrice($user->getAccountingBalance()) }}</td>
-
-                            <td>
-                                {{ !empty($user->userGroup) ? $user->userGroup->group->name : '' }}
-                            </td> --}}
 
                             <td>{{ dateTimeFormat($user->created_at, 'j M Y - H:i') }}</td>
 
