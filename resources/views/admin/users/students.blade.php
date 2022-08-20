@@ -17,7 +17,7 @@
 
     <div class="section-body">
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            {{-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <div class="card card-statistic-1">
                     <div class="card-icon bg-primary">
                         <i class="fas fa-users"></i>
@@ -31,14 +31,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            </div> --}}
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                 <div class="card card-statistic-1">
                     <div class="card-icon bg-success">
-                        <i class="fas fa-briefcase"></i></div>
+                        <i class="fas fa-users"></i></div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>{{ trans('admin/main.organizations_students') }}</h4>
+                            <h4>Total Students</h4>
                         </div>
                         <div class="card-body">
                             {{ $totalOrganizationsStudents }}
@@ -111,7 +111,7 @@
                                 <label class="input-label">{{ trans('admin/main.filters') }}</label>
                                 <select name="sort" data-plugin-selectTwo class="form-control populate">
                                     <option value="">{{ trans('admin/main.filter_type') }}</option>
-                                    <option value="purchased_classes_asc" @if(request()->get('sort') == 'purchased_classes_asc') selected @endif>{{ trans('admin/main.purchased_classes_ascending') }}</option>
+                                    {{-- <option value="purchased_classes_asc" @if(request()->get('sort') == 'purchased_classes_asc') selected @endif>{{ trans('admin/main.purchased_classes_ascending') }}</option>
                                     <option value="purchased_classes_desc" @if(request()->get('sort') == 'purchased_classes_desc') selected @endif>{{ trans('admin/main.purchased_classes_descending') }}</option>
 
                                     <option value="purchased_classes_amount_asc" @if(request()->get('sort') == 'purchased_classes_amount_asc') selected @endif>{{ trans('admin/main.purchased_classes_amount_ascending') }}</option>
@@ -122,7 +122,7 @@
                                     <option value="purchased_appointments_desc" @if(request()->get('sort') == 'purchased_appointments_desc') selected @endif>{{ trans('admin/main.purchased_appointments_descending') }}</option>
 
                                     <option value="purchased_appointments_amount_asc" @if(request()->get('sort') == 'purchased_appointments_amount_asc') selected @endif>{{ trans('admin/main.purchased_appointments_amount_ascending') }}</option>
-                                    <option value="purchased_appointments_amount_desc" @if(request()->get('sort') == 'purchased_appointments_amount_desc') selected @endif>{{ trans('admin/main.purchased_appointments_amount_descending') }}</option>
+                                    <option value="purchased_appointments_amount_desc" @if(request()->get('sort') == 'purchased_appointments_amount_desc') selected @endif>{{ trans('admin/main.purchased_appointments_amount_descending') }}</option> --}}
 
                                     <option value="register_asc" @if(request()->get('sort') == 'register_asc') selected @endif>{{ trans('admin/main.register_date_ascending') }}</option>
                                     <option value="register_desc" @if(request()->get('sort') == 'register_desc') selected @endif>{{ trans('admin/main.register_date_descending') }}</option>
@@ -143,7 +143,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3">
+                        {{-- <div class="col-md-3">
                             <div class="form-group">
                                 <label class="input-label">{{ trans('admin/main.users_group') }}</label>
                                 <select name="group_id" data-plugin-selectTwo class="form-control populate">
@@ -153,7 +153,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
 
 
                         <div class="col-md-3">
@@ -197,8 +197,8 @@
                         <th>ID</th>
                         <th>{{ trans('admin/main.name') }}</th>
                         <th>{{ trans('admin/main.classes') }}</th>
-                        <th>{{ trans('admin/main.appointments') }}</th>
-                        <th>{{ trans('admin/main.wallet_charge') }}</th>
+                        {{-- <th>{{ trans('admin/main.appointments') }}</th> --}}
+                        {{-- <th>{{ trans('admin/main.wallet_charge') }}</th> --}}
                         <th>{{ trans('admin/main.user_group') }}</th>
                         <th>{{ trans('admin/main.register_date') }}</th>
                         <th>{{ trans('admin/main.status') }}</th>
@@ -231,18 +231,18 @@
                             <td>
                                 <div class="media-body">
                                     <div class="text-primary mt-0 mb-1 font-weight-bold">{{ $user->classesPurchasedsCount }}</div>
-                                    <div class="text-small font-600-bold">{{ addCurrencyToPrice(handlePriceFormat($user->classesPurchasedsSum)) }}</div>
+                                    {{-- <div class="text-small font-600-bold">{{ addCurrencyToPrice(handlePriceFormat($user->classesPurchasedsSum)) }}</div> --}}
                                 </div>
                             </td>
 
-                            <td>
+                            {{-- <td>
                                 <div class="media-body">
                                     <div class="text-primary mt-0 mb-1 font-weight-bold">{{ $user->meetingsPurchasedsCount }}</div>
                                     <div class="text-small font-600-bold">{{ addCurrencyToPrice(handlePriceFormat($user->meetingsPurchasedsSum)) }}</div>
                                 </div>
-                            </td>
+                            </td> --}}
 
-                            <td>{{ addCurrencyToPrice($user->getAccountingBalance()) }}</td>
+                            {{-- <td>{{ addCurrencyToPrice($user->getAccountingBalance()) }}</td> --}}
 
                             <td>
                                 {{ !empty($user->userGroup) ? $user->userGroup->group->name : '' }}
