@@ -50,21 +50,21 @@
                                     <a class="nav-link" id="badges-tab" data-toggle="tab" href="#badges" role="tab" aria-controls="badges" aria-selected="true">{{ trans('admin/main.badges') }}</a>
                                 </li>
 
-                                @if(!empty($user) and ($user->isOrganization() or $user->isTeacher()))
+                                {{-- @if(!empty($user) and ($user->isOrganization() or $user->isTeacher()))
                                     @can('admin_update_user_registration_package')
                                         <li class="nav-item">
                                             <a class="nav-link" id="registrationPackage-tab" data-toggle="tab" href="#registrationPackage" role="tab" aria-controls="registrationPackage" aria-selected="true">{{ trans('update.registration_package') }}</a>
                                         </li>
                                     @endcan
-                                @endif
+                                @endif --}}
 
-                                @if(!empty($user) and ($user->isOrganization() or $user->isTeacher()))
+                                {{-- @if(!empty($user) and ($user->isOrganization() or $user->isTeacher()))
                                     @can('admin_update_user_meeting_settings')
                                         <li class="nav-item">
                                             <a class="nav-link" id="meetingSettings-tab" data-toggle="tab" href="#meetingSettings" role="tab" aria-controls="meetingSettings" aria-selected="true">{{ trans('update.meeting_settings') }}</a>
                                         </li>
                                     @endcan
-                                @endif
+                                @endif --}}
 
                                 @if(!empty($becomeInstructor))
                                     <li class="nav-item">
