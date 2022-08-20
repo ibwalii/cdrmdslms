@@ -27,14 +27,6 @@
                 </li>
             @endcan
 
-            <!-- @can('admin_marketing_dashboard')
-                <li class="{{ (request()->is('admin/marketing')) ? 'active' : '' }}">
-                    <a href="/admin/marketing" class="nav-link">
-                        <i class="fas fa-chart-pie"></i>
-                        <span>{{ trans('admin/main.marketing_dashboard_title') }}</span>
-                    </a>
-                </li>
-            @endcan -->
 
             @if($authUser->can('admin_webinars') or
                 $authUser->can('admin_categories') or
@@ -72,19 +64,6 @@
                                 <a class="nav-link" href="/admin/webinars/create">{{ trans('admin/main.new') }}</a>
                             </li>
                         @endcan()
-
-
-                        @can('admin_agora_history_list')
-
-                             <li class="{{ (request()->is('admin/agora_history')) ? 'active' : '' }}">
-                                <a class="nav-link" href="/admin/agora_history">{{ trans('update.agora_history') }}</a>
-                            </li>
-                         @endcan
-
-
-
-
-
 
                     </ul>
                 </li>
