@@ -39,7 +39,7 @@
                                     $meetingDuration = ($agoraHistory->end_at - $agoraHistory->start_at) / 60;
                                 @endphp
 
-                                <tr>
+                                {{-- <tr>
                                     <td class="text-left">{{ $agoraHistory->session->webinar->title }}</td>
                                     <td class="text-left">{{ $agoraHistory->session->title }}</td>
                                     <td>{{ convertMinutesToHourAndMinute($agoraHistory->session->duration) }}</td>
@@ -48,7 +48,7 @@
                                     <td class="{{ ($meetingDuration > $agoraHistory->session->duration) ? 'text-danger' : 'text-success' }}">
                                         {{ convertMinutesToHourAndMinute($meetingDuration) }}
                                     </td>
-                                </tr>
+                                </tr> --}}
                             @endforeach
                         </table>
                     </div>
