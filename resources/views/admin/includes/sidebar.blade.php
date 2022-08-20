@@ -69,7 +69,7 @@
                 </li>
             @endcan()
 
-            <!-- @can('admin_categories')
+            {{-- @can('admin_categories')
                 <li class="nav-item dropdown {{ (request()->is('admin/categories*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                         <i class="fas fa-th"></i>
@@ -114,7 +114,7 @@
                         @endcan()
                     </ul>
                 </li>
-            @endcan() -->
+            @endcan()  --}}
 
             @can('admin_quizzes')
                 <li class="{{ (request()->is('admin/quizzes*')) ? 'active' : '' }}">
@@ -155,17 +155,17 @@
                 </li>
             @endcan -->
 
-            @can('admin_reviews_lists')
+            {{-- @can('admin_reviews_lists')
                 <li class="{{ (request()->is('admin/reviews')) ? 'active' : '' }}">
                     <a href="/admin/reviews" class="nav-link @if(!empty($sidebarBeeps['reviews']) and $sidebarBeeps['reviews']) beep beep-sidebar @endif">
                         <i class="fas fa-star"></i>
                         <span>{{ trans('admin/main.reviews') }}</span>
                     </a>
                 </li>
-            @endcan
+            @endcan --}}
 
 
-            @if($authUser->can('admin_consultants_lists') or
+            {{-- @if($authUser->can('admin_consultants_lists') or
                 $authUser->can('admin_appointments_lists')
             )
                 <li class="menu-header">{{ trans('site.appointments') }}</li>
@@ -187,7 +187,7 @@
                         <span>{{ trans('admin/main.appointments') }}</span>
                     </a>
                 </li>
-            @endcan
+            @endcan --}}
 
             @if($authUser->can('admin_users') or
                 $authUser->can('admin_roles') or
@@ -259,7 +259,7 @@
                 </li>
             @endcan()
 
-            @can('admin_group')
+            {{-- @can('admin_group')
                 <li class="nav-item dropdown {{ (request()->is('admin/users/groups*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                         <i class="fas fa-sitemap"></i>
@@ -278,16 +278,16 @@
                         @endcan
                     </ul>
                 </li>
-            @endcan
+            @endcan --}}
 
-            @can('admin_users_badges')
+            {{-- @can('admin_users_badges')
                 <li class="{{ (request()->is('admin/users/badges')) ? 'active' : '' }}">
                     <a class="nav-link" href="/admin/users/badges">
                         <i class="fas fa-trophy"></i>
                         <span>{{ trans('admin/main.badges') }}</span>
                     </a>
                 </li>
-            @endcan()
+            @endcan() --}}
 
 
 
@@ -481,7 +481,7 @@
                 </li>
             @endcan
 
-            @if($authUser->can('admin_blog') or
+            {{-- @if($authUser->can('admin_blog') or
                 $authUser->can('admin_pages') or
                 $authUser->can('admin_additional_pages') or
                 $authUser->can('admin_testimonials') or
@@ -603,9 +603,9 @@
                         <span>{{ trans('admin/main.tags') }}</span>
                     </a>
                 </li>
-            @endcan()
+            @endcan() --}}
 
-            <!-- @can('admin_regions')
+            {{-- @can('admin_regions')
                 <li class="nav-item dropdown {{ (request()->is('admin/regions*')) ? 'active' : '' }}">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
                         <i class="fas fa-map-marked"></i>
@@ -637,9 +637,9 @@
                         @endcan()
                     </ul>
                 </li>
-            @endcan -->
+            @endcan  --}}
 
-            @if($authUser->can('admin_documents') or
+            {{-- @if($authUser->can('admin_documents') or
                 $authUser->can('admin_sales_list') or
                 $authUser->can('admin_payouts') or
                 $authUser->can('admin_offline_payments_list') or
@@ -804,9 +804,9 @@
                         @endcan
                     </ul>
                 </li>
-            @endcan -->
+            @endcan --> --}}
 
-            @if($authUser->can('admin_discount_codes') or
+            {{-- @if($authUser->can('admin_discount_codes') or
                 $authUser->can('admin_product_discount') or
                 $authUser->can('admin_feature_webinars') or
                 $authUser->can('admin_promotion') or
@@ -957,7 +957,7 @@
                         @endcan
                     </ul>
                 </li>
-            @endcan
+            @endcan --}}
 
             <!-- @can('admin_referrals')
                 <li class="nav-item dropdown {{ (request()->is('admin/referrals*')) ? 'active' : '' }}">
