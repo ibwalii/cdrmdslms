@@ -191,7 +191,6 @@
                                         <th class="text-center">{{ trans('admin/main.question_count') }}</th>
                                         <th class="text-center">{{ trans('admin/main.students_count') }}</th>
                                         <th class="text-center">{{ trans('admin/main.average_grade') }}</th>
-                                        <th class="text-center">{{ trans('admin/main.certificate') }}</th>
                                         <th class="text-center">{{ trans('admin/main.status') }}</th>
                                         <th>{{ trans('admin/main.actions') }}</th>
                                     </tr>
@@ -217,14 +216,6 @@
                                             </td>
 
                                             <td class="text-center">{{ round($quiz->quizResults->avg('user_grade'),2) }} </td>
-
-                                            <td class="text-center">
-                                                @if($quiz->certificate)
-                                                    <a class="text-success fas fa-check"></a>
-                                                @else
-                                                    <a class="text-danger fas fa-times"></a>
-                                                @endif
-                                            </td>
 
                                             <td class="text-center">
                                                 @if($quiz->status === \App\Models\Quiz::ACTIVE)
