@@ -61,7 +61,7 @@
                                     <th class="text-center text-gray">{{ trans('public.phone') }}</th>
                                     <th class="text-center text-gray">{{ trans('webinars.webinars') }}</th>
                                     <th class="text-center text-gray">{{ trans('quiz.quizzes') }}</th>
-                                    <th class="text-center text-gray">{{ trans('panel.certificates') }}</th>
+                                    {{-- <th class="text-center text-gray">{{ trans('panel.certificates') }}</th> --}}
                                     <th class="text-center text-gray">{{ trans('public.date') }}</th>
                                     <th></th>
                                 </tr>
@@ -96,9 +96,9 @@
                                         <td class="align-middle">
                                             <span class="text-dark-blue font-weight-500">{{ count($user->getActiveQuizzesResults()) }}</span>
                                         </td>
-                                        <td class="align-middle">
+                                        {{-- <td class="align-middle">
                                             <span class="text-dark-blue font-weight-500">{{ count($user->certificates) }}</span>
-                                        </td>
+                                        </td> --}}
                                         <td class="text-dark-blue font-weight-500 align-middle">{{ dateTimeFormat($user->created_at,'j M Y | H:i') }}</td>
 
                                         <td class="text-right align-middle">
