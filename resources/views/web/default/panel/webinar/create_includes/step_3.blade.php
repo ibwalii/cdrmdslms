@@ -1,4 +1,4 @@
-@push('styles_top')
+{{-- @push('styles_top')
     <link rel="stylesheet" href="/assets/default/vendors/daterangepicker/daterangepicker.min.css">
     <link href="/assets/default/vendors/sortable/jquery-ui.min.css"/>
 @endpush
@@ -72,4 +72,4 @@
 @push('scripts_bottom')
     <script src="/assets/default/vendors/daterangepicker/daterangepicker.min.js"></script>
     <script src="/assets/default/vendors/sortable/jquery-ui.min.js"></script>
-@endpush
+@endpush --}}

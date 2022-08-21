@@ -10,10 +10,10 @@
             'icon' => 'paper_plus'
         ],
 
-        3 => [
-            'name' => 'pricing',
-            'icon' => 'wallet'
-        ],
+        // 3 => [
+        //     'name' => 'pricing',
+        //     'icon' => 'wallet'
+        // ],
 
         4 => [
             'name' => 'content',

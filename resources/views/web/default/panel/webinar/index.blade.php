@@ -26,7 +26,7 @@
                     </div>
                 </div>
 
-                <div class="col-6 col-md-3 mt-30 mt-md-0 d-flex align-items-center justify-content-center mt-5 mt-md-0">
+                {{-- <div class="col-6 col-md-3 mt-30 mt-md-0 d-flex align-items-center justify-content-center mt-5 mt-md-0">
                     <div class="d-flex flex-column align-items-center text-center">
                         <img src="/assets/default/img/activity/sales.svg" width="64" height="64" alt="">
                         <strong class="font-30 text-dark-blue font-weight-bold mt-5">{{ addCurrencyToPrice($webinarSalesAmount) }}</strong>
@@ -40,7 +40,7 @@
                         <strong class="font-30 text-dark-blue font-weight-bold mt-5">{{ addCurrencyToPrice($courseSalesAmount) }}</strong>
                         <span class="font-16 text-gray font-weight-500">{{ trans('cart.total') .' '.trans('panel.course_sales') }}</span>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
@@ -154,9 +154,9 @@
                                     @endif
                                 </div>
 
-                                @include(getTemplate() . '.includes.webinar.rate',['rate' => $webinar->getRate()])
+                                {{-- @include(getTemplate() . '.includes.webinar.rate',['rate' => $webinar->getRate()]) --}}
 
-                                <div class="webinar-price-box mt-15">
+                                {{-- <div class="webinar-price-box mt-15">
                                     @if($webinar->price > 0)
                                         @if($webinar->bestTicket() < $webinar->price)
                                             <span class="real">{{ handlePrice($webinar->bestTicket()) }}</span>
@@ -167,7 +167,7 @@
                                     @else
                                         <span class="real">{{ trans('public.free') }}</span>
                                     @endif
-                                </div>
+                                </div> --}}
 
                                 <div class="d-flex align-items-center justify-content-between flex-wrap mt-auto">
                                     <div class="d-flex align-items-start flex-column mt-20 mr-15">
@@ -228,8 +228,9 @@
                                     @endif
 
                                     <div class="d-flex align-items-start flex-column mt-20 mr-15">
-                                        <span class="stat-title">{{ trans('panel.sales') }}:</span>
-                                        <span class="stat-value">{{ count($webinar->sales) }} ({{ (!empty($webinar->sales) and count($webinar->sales)) ? addCurrencyToPrice($webinar->sales->sum('amount')) : 0 }})</span>
+                                        {{-- <span class="stat-title">{{ trans('panel.sales') }}:</span> --}}
+                                        <span class="stat-title"> Students:</span>
+                                        <span class="stat-value">{{ count($webinar->sales) }} </span>
                                     </div>
 
                                     @if(!empty($webinar->partner_instructor) and $webinar->partner_instructor and $authUser->id != $webinar->teacher_id and $authUser->id != $webinar->creator_id)
