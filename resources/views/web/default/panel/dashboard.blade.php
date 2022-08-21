@@ -10,7 +10,7 @@
         <div class="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row">
             <h1 class="section-title">{{ trans('panel.dashboard') }}</h1>
 
-            @if(!$authUser->isUser())
+            {{-- @if(!$authUser->isUser())
                 <div class="d-flex align-items-center flex-row-reverse flex-md-row justify-content-start justify-content-md-center mt-20 mt-md-0">
                     <label class="mb-0 mr-10 cursor-pointer text-gray font-14 font-weight-500" for="iNotAvailable">{{ trans('panel.i_not_available') }}</label>
                     <div class="custom-control custom-switch">
@@ -18,14 +18,14 @@
                         <label class="custom-control-label" for="iNotAvailable"></label>
                     </div>
                 </div>
-            @endif
+            @endif --}}
         </div>
 
         @if(!$authUser->financial_approval and !$authUser->isUser())
-            <div class="p-15 mt-20 p-lg-20 not-verified-alert font-weight-500 text-dark-blue rounded-sm panel-shadow">
+            {{-- <div class="p-15 mt-20 p-lg-20 not-verified-alert font-weight-500 text-dark-blue rounded-sm panel-shadow">
                 {{ trans('panel.not_verified_alert') }}
                 <a href="/panel/setting/step/7" class="text-decoration-underline">{{ trans('panel.this_link') }}</a>.
-            </div>
+            </div> --}}
         @endif
 
         <div class="bg-white dashboard-banner-container position-relative px-15 px-ld-35 py-10 panel-shadow rounded-sm">
@@ -56,7 +56,7 @@
 
     <section class="dashboard">
         <div class="row">
-            <div class="col-12 col-lg-3 mt-35">
+            {{-- <div class="col-12 col-lg-3 mt-35">
                 <div class="bg-white account-balance rounded-sm panel-shadow py-15 py-md-30 px-10 px-md-20">
                     <div class="text-center">
                         <img src="/assets/default/img/activity/36.svg" class="account-balance-icon" alt="">
@@ -80,9 +80,9 @@
                         @endif
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="col-12 col-lg-3 mt-35">
+            <div class="col-12 col-lg-6 mt-35">
                 <a href="@if($authUser->isUser()) /panel/webinars/purchases @else /panel/webinars @endif" class="bg-white dashboard-stats rounded-sm panel-shadow p-10 p-md-20 d-flex align-items-center">
                     <div class="stat-icon requests">
                         <img src="/assets/default/img/icons/request.svg" alt="">
@@ -93,7 +93,7 @@
                     </div>
                 </a>
 
-                <a href="@if($authUser->isUser()) /panel/meetings/reservation @else /panel/financial/sales @endif" class="bg-white dashboard-stats rounded-sm panel-shadow p-10 p-md-20 d-flex align-items-center mt-15 mt-md-30">
+                {{-- <a href="@if($authUser->isUser()) /panel/meetings/reservation @else /panel/financial/sales @endif" class="bg-white dashboard-stats rounded-sm panel-shadow p-10 p-md-20 d-flex align-items-center mt-15 mt-md-30">
                     <div class="stat-icon monthly-sales">
                         <img src="@if($authUser->isUser()) /assets/default/img/icons/meeting.svg @else /assets/default/img/icons/monay.svg @endif" alt="">
                     </div>
@@ -101,10 +101,10 @@
                         <span class="font-30 text-secondary">{{ !empty($monthlySalesCount) ? addCurrencyToPrice($monthlySalesCount) : (!empty($reserveMeetingsCount) ? addCurrencyToPrice($reserveMeetingsCount) : 0) }}</span>
                         <span class="font-16 text-gray font-weight-500">{{ $authUser->isUser() ? trans('panel.meetings') : trans('panel.monthly_sales') }}</span>
                     </div>
-                </a>
+                </a> --}}
             </div>
 
-            <div class="col-12 col-lg-3 mt-35">
+            <div class="col-12 col-lg-6 mt-35">
                 <a href="/panel/support" class="bg-white dashboard-stats rounded-sm panel-shadow p-10 p-md-20 d-flex align-items-center">
                     <div class="stat-icon support-messages">
                         <img src="/assets/default/img/icons/support.svg" alt="">
@@ -126,7 +126,7 @@
                 </a>
             </div>
 
-            <div class="col-12 col-lg-3 mt-35">
+            {{-- <div class="col-12 col-lg-3 mt-35">
                 <div class="bg-white account-balance rounded-sm panel-shadow py-15 py-md-15 px-10 px-md-20">
                     <div data-percent="{{ !empty($nextBadge) ? $nextBadge['percent'] : 0 }}" data-label="{{ (!empty($nextBadge) and !empty($nextBadge['earned'])) ? $nextBadge['earned']->title : '' }}" id="nextBadgeChart" class="text-center">
                     </div>
@@ -135,7 +135,7 @@
                         <span class="font-16 font-weight-bold text-secondary">{{ (!empty($nextBadge) and !empty($nextBadge['badge'])) ? $nextBadge['badge']->title : trans('public.not_defined') }}</span>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <div class="row">
@@ -169,7 +169,8 @@
             <div class="col-12 col-lg-6 mt-35">
                 <div class="bg-white monthly-sales-card rounded-sm panel-shadow py-10 py-md-20 px-15 px-md-30">
                     <div class="d-flex align-items-center justify-content-between">
-                        <h3 class="font-16 text-dark-blue font-weight-bold">{{ ($authUser->isUser()) ? trans('panel.learning_statistics') : trans('panel.monthly_sales') }}</h3>
+                        {{-- <h3 class="font-16 text-dark-blue font-weight-bold">{{ ($authUser->isUser()) ? trans('panel.learning_statistics') : trans('panel.monthly_sales') }}</h3> --}}
+                        <h3 class="font-16 text-dark-blue font-weight-bold">Monthly Users</h3>
 
                         <span class="font-16 font-weight-500 text-gray">{{ dateTimeFormat(time(),'M Y') }}</span>
                     </div>
