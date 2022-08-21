@@ -34,7 +34,7 @@
                     </div>
                 @endcan
 
-                @can('admin_settings_financial')
+                {{-- @can('admin_settings_financial')
                     <div class="col-lg-6">
                         <div class="card card-large-icons">
                             <div class="card-icon bg-primary text-white">
@@ -47,9 +47,9 @@
                             </div>
                         </div>
                     </div>
-                @endcan
+                @endcan --}}
 
-                @can('admin_settings_personalization')
+                {{-- @can('admin_settings_personalization')
                     <div class="col-lg-6">
                         <div class="card card-large-icons">
                             <div class="card-icon bg-primary text-white">
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                     </div>
-                @endcan
+                @endcan --}}
 
                 @can('admin_settings_notifications')
                     <div class="col-lg-6">
@@ -79,7 +79,7 @@
                     </div>
                 @endcan
 
-                @can('admin_settings_seo')
+                {{-- @can('admin_settings_seo')
                     <div class="col-lg-6">
                         <div class="card card-large-icons">
                             <div class="card-icon bg-primary text-white">
@@ -92,9 +92,9 @@
                             </div>
                         </div>
                     </div>
-                @endcan
+                @endcan --}}
 				{{-- d08442 --}}
-                @can('admin_settings_customization')
+                {{-- @can('admin_settings_customization')
                     <div class="col-lg-6">
                         <div class="card card-large-icons">
                             <div class="card-icon bg-primary text-white">
@@ -107,7 +107,7 @@
                             </div>
                         </div>
                     </div>
-                @endcan
+                @endcan --}}
             </div>
         </div>
     </section>
