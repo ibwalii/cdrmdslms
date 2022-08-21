@@ -49,7 +49,7 @@
 
         <div class="border-left mx-30"></div>
 
-        @if($authUser->isUser())
+        {{-- @if($authUser->isUser())
             <div class="sidebar-user-stat-item d-flex flex-column">
                 <strong class="text-center">{{ $authUser->following()->count() }}</strong>
                 <span class="font-12">{{ trans('panel.following') }}</span>
@@ -59,7 +59,7 @@
                 <strong class="text-center">{{ $authUser->followers()->count() }}</strong>
                 <span class="font-12">{{ trans('panel.followers') }}</span>
             </div>
-        @endif
+        @endif --}}
     </div>
 
     <ul class="sidebar-menu pt-10 @if(!empty($authUser->userGroup)) has-user-group @endif @if(empty($getPanelSidebarSettings) or empty($getPanelSidebarSettings['background'])) without-bottom-image @endif" data-simplebar @if((!empty($isRtl) and $isRtl)) data-simplebar-direction="rtl" @endif>
@@ -134,9 +134,9 @@
                             <a href="/panel/webinars">{{ trans('panel.my_classes') }}</a>
                         </li>
 
-                        <li class="mt-5 {{ (request()->is('panel/webinars/invitations')) ? 'active' : '' }}">
+                        {{-- <li class="mt-5 {{ (request()->is('panel/webinars/invitations')) ? 'active' : '' }}">
                             <a href="/panel/webinars/invitations">{{ trans('panel.invited_classes') }}</a>
-                        </li>
+                        </li> --}}
                     @endif
 
                     @if(!empty($authUser->organ_id))
@@ -145,9 +145,9 @@
                         </li>
                     @endif
 
-                    <li class="mt-5 {{ (request()->is('panel/webinars/purchases')) ? 'active' : '' }}">
+                    {{-- <li class="mt-5 {{ (request()->is('panel/webinars/purchases')) ? 'active' : '' }}">
                         <a href="/panel/webinars/purchases">{{ trans('panel.my_purchases') }}</a>
-                    </li>
+                    </li> --}}
 
                     @if($authUser->isOrganization() || $authUser->isTeacher())
                         <li class="mt-5 {{ (request()->is('panel/webinars/comments')) ? 'active' : '' }}">
@@ -158,14 +158,14 @@
                     <li class="mt-5 {{ (request()->is('panel/webinars/my-comments')) ? 'active' : '' }}">
                         <a href="/panel/webinars/my-comments">{{ trans('panel.my_comments') }}</a>
                     </li>
-                    <li class="mt-5 {{ (request()->is('panel/webinars/favorites')) ? 'active' : '' }}">
+                    {{-- <li class="mt-5 {{ (request()->is('panel/webinars/favorites')) ? 'active' : '' }}">
                         <a href="/panel/webinars/favorites">{{ trans('panel.favorites') }}</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </li>
 
-        <li class="sidenav-item {{ (request()->is('panel/meetings') or request()->is('panel/meetings/*')) ? 'sidenav-item-active' : '' }}">
+        {{-- <li class="sidenav-item {{ (request()->is('panel/meetings') or request()->is('panel/meetings/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#meetingCollapse" role="button" aria-expanded="false" aria-controls="meetingCollapse">
                 <span class="sidenav-item-icon mr-10">
                     @include('web.default.panel.includes.sidebar_icons.requests')
@@ -191,7 +191,7 @@
                     @endif
                 </ul>
             </div>
-        </li>
+        </li> --}}
 
         <li class="sidenav-item {{ (request()->is('panel/quizzes') or request()->is('panel/quizzes/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#quizzesCollapse" role="button" aria-expanded="false" aria-controls="quizzesCollapse">
@@ -226,7 +226,7 @@
             </div>
         </li>
 
-        <li class="sidenav-item {{ (request()->is('panel/certificates') or request()->is('panel/certificates/*')) ? 'sidenav-item-active' : '' }}">
+        {{-- <li class="sidenav-item {{ (request()->is('panel/certificates') or request()->is('panel/certificates/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#certificatesCollapse" role="button" aria-expanded="false" aria-controls="certificatesCollapse">
                 <span class="sidenav-item-icon mr-10">
                     @include('web.default.panel.includes.sidebar_icons.certificate')
@@ -252,9 +252,9 @@
 
                 </ul>
             </div>
-        </li>
+        </li> --}}
 
-        <li class="sidenav-item {{ (request()->is('panel/financial') or request()->is('panel/financial/*')) ? 'sidenav-item-active' : '' }}">
+        {{-- <li class="sidenav-item {{ (request()->is('panel/financial') or request()->is('panel/financial/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#financialCollapse" role="button" aria-expanded="false" aria-controls="financialCollapse">
                 <span class="sidenav-item-icon mr-10">
                     @include('web.default.panel.includes.sidebar_icons.financial')
@@ -294,7 +294,7 @@
                     @endif
                 </ul>
             </div>
-        </li>
+        </li> --}}
 
         <li class="sidenav-item {{ (request()->is('panel/support') or request()->is('panel/support/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#supportCollapse" role="button" aria-expanded="false" aria-controls="supportCollapse">
@@ -319,7 +319,7 @@
             </div>
         </li>
 
-        @if(!$authUser->isUser() or (!empty($referralSettings) and $referralSettings['status'] and $authUser->affiliate))
+        {{-- @if(!$authUser->isUser() or (!empty($referralSettings) and $referralSettings['status'] and $authUser->affiliate))
             <li class="sidenav-item {{ (request()->is('panel/marketing') or request()->is('panel/marketing/*')) ? 'sidenav-item-active' : '' }}">
                 <a class="d-flex align-items-center" data-toggle="collapse" href="#marketingCollapse" role="button" aria-expanded="false" aria-controls="marketingCollapse">
                 <span class="sidenav-item-icon mr-10">
@@ -347,7 +347,7 @@
                     </ul>
                 </div>
             </li>
-        @endif
+        @endif --}}
 
         @if($authUser->isOrganization())
             <li class="sidenav-item {{ (request()->is('panel/noticeboard') or request()->is('panel/noticeboard/*')) ? 'sidenav-item-active' : '' }}">
@@ -373,7 +373,7 @@
             </li>
         @endif
 
-        @php
+        {{-- @php
             $rewardSetting = getRewardsSettings();
         @endphp
 
@@ -386,7 +386,7 @@
                     <span class="font-14 text-dark-blue font-weight-500">{{ trans('update.rewards') }}</span>
                 </a>
             </li>
-        @endif
+        @endif --}}
 
         <li class="sidenav-item {{ (request()->is('panel/notifications')) ? 'sidenav-item-active' : '' }}">
             <a href="/panel/notifications" class="d-flex align-items-center">
