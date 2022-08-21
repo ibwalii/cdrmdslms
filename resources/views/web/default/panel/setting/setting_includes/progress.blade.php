@@ -30,10 +30,10 @@
             'icon' => 'skills'
         ],
 
-        7 => [
-            'lang' => 'public.identity_and_financial',
-            'icon' => 'financial'
-        ]
+        // 7 => [
+        //     'lang' => 'public.identity_and_financial',
+        //     'icon' => 'financial'
+        // ]
     ];
 
     if(!$user->isUser()) {

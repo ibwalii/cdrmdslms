@@ -45,9 +45,9 @@
                 @include('web.default.panel.setting.setting_includes.occupations')
                 @break
 
-                @case(7)
+                {{-- @case(7)
                     @include('web.default.panel.setting.setting_includes.identity_and_financial')
-                @break
+                @break --}}
 
                 @case(8)
                 @if(!$user->isUser())
