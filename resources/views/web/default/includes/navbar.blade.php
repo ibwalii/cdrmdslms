@@ -27,7 +27,7 @@
                 </div>
 
                 <ul class="navbar-nav ml-auto d-flex align-items-center">
-                    <!-- @if(!empty($categories) and count($categories))
+                    {{-- @if(!empty($categories) and count($categories))
                         <li class="mr-lg-25">
                             <div class="menu-category">
                                 <ul>
@@ -64,7 +64,7 @@
                                 </ul>
                             </div>
                         </li>
-                    @endif -->
+                    @endif --}}
 
                     @if(!empty($navbarPages) and count($navbarPages))
                         @foreach($navbarPages as $navbarPage)
@@ -88,7 +88,7 @@
                 </a> -->
 
                 <div class="d-none nav-notify-cart-dropdown top-navbar ">
-                    @include(getTemplate().'.includes.shopping-cart-dropdwon')
+                    {{-- @include(getTemplate().'.includes.shopping-cart-dropdwon') --}}
 
                     <div class="border-left mx-15"></div>
 
