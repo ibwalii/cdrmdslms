@@ -25,7 +25,7 @@
             <select name="type" class="custom-select @error('type')  is-invalid @enderror">
                 <option value="webinar" @if(!empty($webinar) and $webinar->isWebinar()) selected @endif>{{ trans('webinars.webinar') }}</option>
                 <option value="course" @if(!empty($webinar) and $webinar->type == 'course') selected @endif>{{ trans('webinars.video_course') }}</option>
-                <option>{{ trans('webinars.text_lesson') }} (Paid Plugin)</option>
+                <option value="text_lesson" @if(!empty($webinar) and $webinar->isTextCourse()) selected @endif>{{ trans('webinars.text_lesson') }}</option>
             </select>
 
             @error('type')
@@ -203,14 +203,15 @@
         <div class="col-6">
 
             <div class="form-group mt-30 d-flex align-items-center">
-                <label class="cursor-pointer mb-0 input-label" for="privateSwitch">{{ trans('webinars.private') }}</label>
+                {{-- <label class="cursor-pointer mb-0 input-label" for="privateSwitch">{{ trans('webinars.private') }}</label> --}}
+                <label class="cursor-pointer mb-0 input-label" for="privateSwitch">Active</label>
                 <div class="ml-30 custom-control custom-switch">
-                    <input type="checkbox" name="private" class="custom-control-input" id="privateSwitch" {{ (!empty($webinar) and $webinar->private) ? 'checked' :  '' }}>
+                    <input type="checkbox" name="private" class="custom-control-input" checked id="privateSwitch" {{ (!empty($webinar) and $webinar->private) ? 'checked' :  '' }}>
                     <label class="custom-control-label" for="privateSwitch"></label>
                 </div>
             </div>
 
-            <p class="text-gray font-12">{{ trans('webinars.create_private_course_hint') }}</p>
+            {{-- <p class="text-gray font-12">{{ trans('webinars.create_private_course_hint') }}</p> --}}
         </div>
     </div>
 @endif
