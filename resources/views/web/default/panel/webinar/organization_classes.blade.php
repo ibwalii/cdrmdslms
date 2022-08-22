@@ -60,11 +60,11 @@
                                 <label class="input-label">{{ trans('public.sort_by') }}</label>
                                 <select name="sort" class="form-control">
                                     <option value="">{{ trans('public.all') }}</option>
-                                    <option value="newest" @if(request()->get('sort', null) == 'newest') selected="selected" @endif>{{ trans('public.newest') }}</option>
+                                    {{-- <option value="newest" @if(request()->get('sort', null) == 'newest') selected="selected" @endif>{{ trans('public.newest') }}</option>
                                     <option value="expensive" @if(request()->get('sort', null) == 'expensive') selected="selected" @endif>{{ trans('public.expensive') }}</option>
                                     <option value="inexpensive" @if(request()->get('sort', null) == 'inexpensive') selected="selected" @endif>{{ trans('public.inexpensive') }}</option>
                                     <option value="bestsellers" @if(request()->get('sort', null) == 'bestsellers') selected="selected" @endif>{{ trans('public.bestsellers') }}</option>
-                                    <option value="best_rates" @if(request()->get('sort', null) == 'best_rates') selected="selected" @endif>{{ trans('public.best_rates') }}</option>
+                                    <option value="best_rates" @if(request()->get('sort', null) == 'best_rates') selected="selected" @endif>{{ trans('public.best_rates') }}</option> --}}
                                 </select>
                             </div>
                         </div>
@@ -80,9 +80,10 @@
 
     <section class="mt-25">
         <div class="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row">
-            <h2 class="section-title">{{ trans('panel.organization_classes') }}</h2>
+            {{-- <h2 class="section-title">{{ trans('panel.organization_classes') }}</h2> --}}
+            
 
-            <form action="" method="get">
+            {{-- <form action="" method="get">
                 <div class="d-flex align-items-center flex-row-reverse flex-md-row justify-content-start justify-content-md-center mt-20 mt-md-0">
                     <label class="cursor-pointer mb-0 mr-10 text-gray font-14 font-weight-500" for="freeClassesSwitch">{{ trans('panel.only_free_classes') }}</label>
                     <div class="custom-control custom-switch">
@@ -90,11 +91,13 @@
                         <label class="custom-control-label" for="freeClassesSwitch"></label>
                     </div>
                 </div>
-            </form>
+            </form> --}}
         </div>
 
         @if(!empty($webinars) and !$webinars->isEmpty())
-
+            @if($authUser->id != $webinars[0]->teacher_id and $authUser->id != $webinars[0]->creator_id)
+                <h3>{{ $webinars[0]->creator->full_name }}</h3>
+            @endif
             @foreach($webinars as $webinar)
                 @php
                     $lastSession = $webinar->lastSession();
@@ -157,9 +160,13 @@
                                     </a>
                                 </div>
 
-                                @include(getTemplate() . '.includes.webinar.rate',['rate' => $webinar->getRate()])
+                                {{-- @include(getTemplate() . '.includes.webinar.rate',['rate' => $webinar->getRate()]) --}}
 
                                 <div class="webinar-price-box mt-15">
+                                    <span class="real">Description:{!! $webinar->desc !!}</span>
+                                </div>
+
+                                {{-- <div class="webinar-price-box mt-15">
                                     @if($webinar->price > 0)
                                         @if($webinar->bestTicket() < $webinar->price)
                                             <span class="real">{{ handlePrice($webinar->bestTicket()) }}</span>
@@ -170,7 +177,7 @@
                                     @else
                                         <span class="real">{{ trans('public.free') }}</span>
                                     @endif
-                                </div>
+                                </div> --}}
 
                                 <div class="d-flex align-items-center justify-content-between flex-wrap mt-auto">
                                     <div class="d-flex align-items-start flex-column mt-20 mr-15">
@@ -231,8 +238,10 @@
                                     @endif
 
                                     <div class="d-flex align-items-start flex-column mt-20 mr-15">
-                                        <span class="stat-title">{{ trans('panel.sales') }}:</span>
-                                        <span class="stat-value">{{ count($webinar->sales) }} ({{ (!empty($webinar->sales) and count($webinar->sales)) ? addCurrencyToPrice($webinar->sales->sum('amount')) : 0 }})</span>
+                                        {{-- <span class="stat-title">{{ trans('panel.sales') }}:</span> --}}
+                                        <span class="stat-title">:</span>
+                                        {{-- <span class="stat-value">{{ count($webinar->sales) }} ({{ (!empty($webinar->sales) and count($webinar->sales)) ? addCurrencyToPrice($webinar->sales->sum('amount')) : 0 }})</span> --}}
+                                        <span class="stat-value">{{ count($webinar->sales) }}</span>
                                     </div>
 
                                     @if($authUser->id != $webinar->teacher_id and $authUser->id != $webinar->creator_id)
