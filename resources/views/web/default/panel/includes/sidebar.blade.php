@@ -40,7 +40,7 @@
             @endif
         </div>
     </div>
-
+    @if($authUser->isOrganization() || $authUser->isTeacher())
     <div class="d-flex sidebar-user-stats pb-10 ml-20 pb-lg-20 mt-15 mt-lg-30">
         <div class="sidebar-user-stat-item d-flex flex-column">
             <strong class="text-center">{{ $authUser->webinars()->count() }}</strong>
@@ -61,6 +61,7 @@
             </div>
         @endif --}}
     </div>
+    @endif
 
     <ul class="sidebar-menu pt-10 @if(!empty($authUser->userGroup)) has-user-group @endif @if(empty($getPanelSidebarSettings) or empty($getPanelSidebarSettings['background'])) without-bottom-image @endif" data-simplebar @if((!empty($isRtl) and $isRtl)) data-simplebar-direction="rtl" @endif>
 
