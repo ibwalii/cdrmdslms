@@ -145,10 +145,12 @@
                         </li>
                     @endif
 
+                    @if($authUser->isUser())
                     <li class="mt-5 {{ (request()->is('panel/webinars/purchases')) ? 'active' : '' }}">
                         {{-- <a href="/panel/webinars/purchases">{{ trans('panel.my_purchases') }}</a> --}}
                         <a href="/panel/webinars/purchases">My Modules</a>
                     </li>
+                    @endif
 
                     @if($authUser->isOrganization() || $authUser->isTeacher())
                         <li class="mt-5 {{ (request()->is('panel/webinars/comments')) ? 'active' : '' }}">
