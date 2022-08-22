@@ -14,7 +14,8 @@
                     <div class="d-flex flex-column align-items-center text-center">
                         <img src="/assets/default/img/activity/webinars.svg" width="64" height="64" alt="">
                         <strong class="font-30 text-dark-blue font-weight-bold mt-5">{{ $allWebinarsCount }}</strong>
-                        <span class="font-16 text-gray font-weight-500">{{ trans('panel.purchased') }}</span>
+                        {{-- <span class="font-16 text-gray font-weight-500">{{ trans('panel.purchased') }}</span> --}}
+                        <span class="font-16 text-gray font-weight-500">My Courses</span>
                     </div>
                 </div>
 
@@ -40,9 +41,10 @@
 
     <section class="mt-25">
         <div class="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row">
-            <h2 class="section-title">{{ trans('panel.my_purchases') }}</h2>
+            {{-- <h2 class="section-title">{{ trans('panel.my_purchases') }}</h2> --}}
+            <h2 class="section-title">Course List</h2>
 
-            <form action="" method="get">
+            {{-- <form action="" method="get">
                 <div class="d-flex align-items-center flex-row-reverse flex-md-row justify-content-start justify-content-md-center mt-20 mt-md-0">
                     <label class="mb-0 mr-10 text-gray font-14 font-weight-500" for="conductedSwitch">{{ trans('panel.only_not_conducted_webinars') }}</label>
                     <div class="custom-control custom-switch">
@@ -50,7 +52,7 @@
                         <label class="custom-control-label cursor-pointer" for="conductedSwitch"></label>
                     </div>
                 </div>
-            </form>
+            </form> --}}
         </div>
 
         @if(!empty($webinars) and !$webinars->isEmpty())
@@ -127,18 +129,21 @@
                                                 <a href="{{ $webinar->getUrl() }}?tab=content" target="_blank" class="webinar-actions d-block mt-10">{{ trans('home.download') }}</a>
                                             @endif
 
-                                            @if($webinar->price > 0)
+                                            {{-- @if($webinar->price > 0)
                                                 <a href="/panel/webinars/{{ $webinar->id }}/invoice" target="_blank" class="webinar-actions d-block mt-10">{{ trans('public.invoice') }}</a>
-                                            @endif
+                                            @endif --}}
 
                                             <a href="{{ $webinar->getUrl() }}?tab=reviews" target="_blank" class="webinar-actions d-block mt-10">{{ trans('public.feedback') }}</a>
                                         </div>
                                     </div>
                                 </div>
 
-                                @include(getTemplate() . '.includes.webinar.rate',['rate' => $webinar->getRate()])
+                                {{-- @include(getTemplate() . '.includes.webinar.rate',['rate' => $webinar->getRate()]) --}}
 
                                 <div class="webinar-price-box mt-15">
+                                        {{-- <span class="real">Description:{!! $webinar->description !!}</span> --}}
+                                </div> 
+                                {{-- <div class="webinar-price-box mt-15">
                                     @if($webinar->price > 0)
                                         @if($webinar->bestTicket() < $webinar->price)
                                             <span class="real">{{ handlePrice($webinar->bestTicket()) }}</span>
@@ -149,7 +154,7 @@
                                     @else
                                         <span class="real">{{ trans('public.free') }}</span>
                                     @endif
-                                </div>
+                                </div> --}}
 
                                 <div class="d-flex align-items-center justify-content-between flex-wrap mt-auto">
                                     <div class="d-flex align-items-start flex-column mt-20 mr-15">
@@ -192,7 +197,8 @@
                                     </div>
 
                                     <div class="d-flex align-items-start flex-column mt-20 mr-15">
-                                        <span class="stat-title">{{ trans('panel.purchase_date') }}:</span>
+                                        {{-- <span class="stat-title">{{ trans('panel.purchase_date') }}:</span> --}}
+                                        <span class="stat-title">Enrolled:</span>
                                         <span class="stat-value">{{ dateTimeFormat($webinar->purchast_date,'j M Y') }}</span>
                                     </div>
 
