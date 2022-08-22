@@ -89,7 +89,8 @@
                     </div>
                     <div class="d-flex flex-column ml-15">
                         <span class="font-30 text-secondary">{{ !empty($pendingAppointments) ? $pendingAppointments : (!empty($webinarsCount) ? $webinarsCount : 0) }}</span>
-                        <span class="font-16 text-gray font-weight-500">{{ $authUser->isUser() ? trans('panel.purchased_courses') : trans('panel.pending_appointments') }}</span>
+                        {{-- <span class="font-16 text-gray font-weight-500">{{ $authUser->isUser() ? trans('panel.purchased_courses') : trans('panel.pending_appointments') }}</span> --}}
+                        <span class="font-16 text-gray font-weight-500">{{ $authUser->isUser() ? "My Courses" : trans('panel.pending_appointments') }}</span>
                     </div>
                 </a>
 
