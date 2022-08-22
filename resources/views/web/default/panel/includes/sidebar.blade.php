@@ -35,9 +35,9 @@
                 <h3 class="font-16 font-weight-bold text-center">{{ $authUser->full_name }}</h3>
             </a>
 
-            @if(!empty($authUser->getUserGroup()))
+            {{-- @if(!empty($authUser->getUserGroup()))
                 <span class="create-new-user mt-10">{{ $authUser->getUserGroup()->name }}</span>
-            @endif
+            @endif --}}
         </div>
     </div>
     @if($authUser->isOrganization() || $authUser->isTeacher())
