@@ -153,9 +153,9 @@
                                         <h3 class="font-16 text-dark-blue font-weight-bold">{{ $webinar->title }}
                                             <span class="badge badge-dark status-badge-dark ml-10">{{ trans('webinars.'.$webinar->type) }}</span>
 
-                                            @if($webinar->private)
+                                            {{-- @if($webinar->private)
                                                 <span class="badge badge-danger status-badge-danger ml-10">{{ trans('webinars.private') }}</span>
-                                            @endif
+                                            @endif --}}
                                         </h3>
                                     </a>
                                 </div>
