@@ -29,15 +29,15 @@
                         </h1>
                         <span class="d-block font-16 mt-10">{{ trans('public.in') }} <a href="{{ $course->category->getUrl() }}" target="_blank" class="font-weight-500 text-decoration-underline text-white">{{ $course->category->title }}</a></span>
 
-                        <div class="d-flex align-items-center">
+                        {{-- <div class="d-flex align-items-center">
                             @include('web.default.includes.webinar.rate',['rate' => $course->getRate()])
                             <span class="ml-10 mt-15 font-14">({{ $course->reviews->pluck('creator_id')->count() }} {{ trans('public.ratings') }})</span>
-                        </div>
+                        </div> --}}
 
-                        <div class="mt-15">
+                        {{-- <div class="mt-15">
                             <span class="font-14">{{ trans('public.created_by') }}</span>
                             <a href="{{ $course->teacher->getProfileUrl() }}" target="_blank" class="text-decoration-underline text-white font-14 font-weight-500">{{ $course->teacher->full_name }}</a>
-                        </div>
+                        </div> --}}
 
                         @if($hasBought or $course->isWebinar())
                             @php
@@ -171,7 +171,7 @@
                                 </div>
                             @else
                                 <div class="d-flex align-items-center justify-content-center mt-20">
-                                    <span class="font-36 text-primary">{{ trans('public.free') }}</span>
+                                    {{-- <span class="font-36 text-primary">{{ trans('public.free') }}</span> --}}
                                 </div>
                             @endif
 
@@ -182,10 +182,12 @@
 
                             <div class="mt-20 d-flex flex-column">
                                 @if($userHasBought)
-                                    <a href="{{ $course->getLearningPageUrl() }}" class="btn btn-primary">{{ trans('panel.purchased') }}</a>
+                                    {{-- <a href="{{ $course->getLearningPageUrl() }}" class="btn btn-primary">{{ trans('panel.purchased') }}</a> --}}
+                                    <a href="{{ $course->getLearningPageUrl() }}" class="btn btn-primary">Enrolled</a>
                                 @elseif($course->price > 0)
                                     <button type="{{ $canSale ? 'submit' : 'button' }}" @if(!$canSale) disabled @endif class="btn btn-primary">
-                                        {{ trans('public.add_to_cart') }}
+                                        {{-- {{ trans('public.add_to_cart') }} --}}
+                                        Enroll
                                     </button>
 
                                     @if($canSale and $course->subscribe)
@@ -204,10 +206,10 @@
 
                         </form>
 
-                        <div class="mt-20 d-flex align-items-center justify-content-center text-gray">
+                        {{-- <div class="mt-20 d-flex align-items-center justify-content-center text-gray">
                             <i data-feather="thumbs-up" width="20" height="20"></i>
                             <span class="ml-5 font-14">{{ trans('product.guarantee_text') }}</span>
-                        </div>
+                        </div> --}}
 
                         <div class="mt-35">
                             <strong class="d-block text-secondary font-weight-bold">{{ trans('webinars.this_webinar_includes',['classes' => trans('webinars.'.$course->type)]) }}</strong>
@@ -240,7 +242,7 @@
                             @endif
                         </div>
 
-                        <div class="mt-40 p-10 rounded-sm border row align-items-center favorites-share-box">
+                        {{-- <div class="mt-40 p-10 rounded-sm border row align-items-center favorites-share-box">
                             @if($course->isWebinar())
                                 <div class="col">
                                     <a href="{{ $course->addToCalendarLink() }}" target="_blank" class="d-flex flex-column align-items-center text-center text-gray">
@@ -263,7 +265,7 @@
                                     <span class="font-12">{{ trans('public.share') }}</span>
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="mt-30 text-center">
                             <button type="button" id="webinarReportBtn" class="font-14 text-gray btn-transparent">{{ trans('webinars.report_this_webinar') }}</button>
@@ -316,13 +318,13 @@
                             <span class="font-14">{{ convertMinutesToHourAndMinute(!empty($course->duration) ? $course->duration : 0) }} {{ trans('home.hours') }}</span>
                         </div>
 
-                        <div class="mt-20 d-flex align-items-center justify-content-between text-gray">
+                        {{-- <div class="mt-20 d-flex align-items-center justify-content-between text-gray">
                             <div class="d-flex align-items-center">
                                 <i data-feather="users" width="20" height="20"></i>
                                 <span class="ml-5 font-14 font-weight-500">{{ trans('quiz.students') }}:</span>
                             </div>
                             <span class="font-14">{{ $course->sales_count }}</span>
-                        </div>
+                        </div> --}}
 
                         @if($course->isWebinar())
                             <div class="mt-20 d-flex align-items-center justify-content-between text-gray">
@@ -365,21 +367,21 @@
                 </div>
 
                 {{-- organization --}}
-                @if($course->creator_id != $course->teacher_id)
+                {{-- @if($course->creator_id != $course->teacher_id)
                     @include('web.default.course.sidebar_instructor_profile', ['courseTeacher' => $course->creator])
-                @endif
+                @endif --}}
                 {{-- teacher --}}
-                @include('web.default.course.sidebar_instructor_profile', ['courseTeacher' => $course->teacher])
+                {{-- @include('web.default.course.sidebar_instructor_profile', ['courseTeacher' => $course->teacher])
 
                 @if($course->webinarPartnerTeacher->count() > 0)
                     @foreach($course->webinarPartnerTeacher as $webinarPartnerTeacher)
                         @include('web.default.course.sidebar_instructor_profile', ['courseTeacher' => $webinarPartnerTeacher->teacher])
                     @endforeach
-                @endif
+                @endif --}}
                 {{-- ./ teacher --}}
 
                 {{-- tags --}}
-                @if($course->tags->count() > 0)
+                {{-- @if($course->tags->count() > 0)
                     <div class="rounded-lg tags-card shadow-sm mt-35 px-25 py-20">
                         <h3 class="sidebar-title font-16 text-secondary font-weight-bold">{{ trans('public.tags') }}</h3>
 
@@ -389,9 +391,9 @@
                             @endforeach
                         </div>
                     </div>
-                @endif
+                @endif --}}
                 {{-- ads --}}
-                @if(!empty($advertisingBannersSidebar) and count($advertisingBannersSidebar))
+                {{-- @if(!empty($advertisingBannersSidebar) and count($advertisingBannersSidebar))
                     <div class="row">
                         @foreach($advertisingBannersSidebar as $sidebarBanner)
                             <div class="rounded-lg sidebar-ads mt-35 col-{{ $sidebarBanner->size }}">
@@ -402,12 +404,12 @@
                         @endforeach
                     </div>
 
-                @endif
+                @endif --}}
             </div>
         </div>
 
         {{-- Ads Bannaer --}}
-        @if(!empty($advertisingBanners) and count($advertisingBanners))
+        {{-- @if(!empty($advertisingBanners) and count($advertisingBanners))
             <div class="mt-30 mt-md-50">
                 <div class="row">
                     @foreach($advertisingBanners as $banner)
@@ -419,7 +421,7 @@
                     @endforeach
                 </div>
             </div>
-        @endif
+        @endif --}}
         {{-- ./ Ads Bannaer --}}
     </section>
 
