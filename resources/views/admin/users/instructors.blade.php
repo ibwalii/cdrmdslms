@@ -156,10 +156,10 @@
                                 <label class="input-label">{{ trans('admin/main.status') }}</label>
                                 <select name="status" data-plugin-selectTwo class="form-control populate">
                                     <option value="">{{ trans('admin/main.all_status') }}</option>
-                                    <option value="active_verified" @if(request()->get('status') == 'active_verified') selected @endif>{{ trans('admin/main.active_verified') }}</option>
+                                    {{-- <option value="active_verified" @if(request()->get('status') == 'active_verified') selected @endif>{{ trans('admin/main.active_verified') }}</option>
                                     <option value="active_notVerified" @if(request()->get('status') == 'active_notVerified') selected @endif>{{ trans('admin/main.active_not_verified') }}</option>
                                     <option value="inactive" @if(request()->get('status') == 'inactive') selected @endif>{{ trans('admin/main.inactive') }}</option>
-                                    <option value="ban" @if(request()->get('status') == 'ban') selected @endif>{{ trans('admin/main.banned') }}</option>
+                                    <option value="ban" @if(request()->get('status') == 'ban') selected @endif>{{ trans('admin/main.banned') }}</option> --}}
                                 </select>
                             </div>
                         </div>
@@ -228,7 +228,7 @@
                                         <div class="text-small font-600-bold">{{ trans('admin/main.until') }} {{ dateTimeFormat($user->ban_end_at, 'j M Y') }}</div>
                                     @else
                                         <div class="mt-0 mb-1 font-weight-bold {{ ($user->status == 'active') ? 'text-success' : 'text-warning' }}">{{ trans('admin/main.'.$user->status) }}</div>
-                                        <div class="text-small font-600-bold {{ ($user->verified ? ' text-success ' : ' text-warning ') }}">({{ trans('admin/main.'.($user->verified ? 'verified' : 'not_verified')) }})</div>
+                                        {{-- <div class="text-small font-600-bold {{ ($user->verified ? ' text-success ' : ' text-warning ') }}">({{ trans('admin/main.'.($user->verified ? 'verified' : 'not_verified')) }})</div> --}}
                                     @endif
                                 </div>
                             </td>
