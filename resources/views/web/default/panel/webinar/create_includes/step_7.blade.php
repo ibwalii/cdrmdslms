@@ -5,7 +5,8 @@
 
 <section class="mt-50">
     <div class="">
-        <h2 class="section-title after-line">{{ trans('public.quiz_certificate') }} ({{ trans('public.optional') }})</h2>
+        {{-- <h2 class="section-title after-line">{{ trans('public.quiz_certificate') }} ({{ trans('public.optional') }})</h2> --}}
+        <h2 class="section-title after-line">Quiz ({{ trans('public.optional') }})</h2>
     </div>
 
     <button id="webinarAddQuiz" data-webinar-id="{{ $webinar->id }}" type="button" class="btn btn-primary btn-sm mt-15">{{ trans('public.add_quiz') }}</button>

@@ -40,7 +40,7 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="position-relative font-14 d-flex align-items-center" id="certificates-tab" data-toggle="tab"
                            href="#certificates" role="tab" aria-controls="certificates"
                            aria-selected="false">
@@ -49,7 +49,7 @@
                             </i>
                             <span class="learning-page-tabs-link-text">{{ trans('panel.certificates') }}</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
 
                 <div class="tab-content h-100" id="nav-tabContent">
@@ -63,10 +63,10 @@
                         @include('web.default.course.learningPage.components.quiz_tab.index')
                     </div>
 
-                    <div class="pb-20 tab-pane fade  h-100" id="certificates" role="tabpanel"
+                    {{-- <div class="pb-20 tab-pane fade  h-100" id="certificates" role="tabpanel"
                          aria-labelledby="certificates-tab">
                         @include('web.default.course.learningPage.components.certificate_tab.index')
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

@@ -27,7 +27,8 @@
                         <h1 class="font-30 course-title">
                             {{ clean($course->title, 't') }}
                         </h1>
-                        <span class="d-block font-16 mt-10">{{ trans('public.in') }} <a href="{{ $course->category->getUrl() }}" target="_blank" class="font-weight-500 text-decoration-underline text-white">{{ $course->category->title }}</a></span>
+                        <span class="d-block font-16 mt-10">&nbsp;</span>
+                        {{-- <span class="d-block font-16 mt-10">{{ trans('public.in') }} <a href="{{ $course->category->getUrl() }}" target="_blank" class="font-weight-500 text-decoration-underline text-white">{{ $course->category->title }}</a></span> --}}
 
                         {{-- <div class="d-flex align-items-center">
                             @include('web.default.includes.webinar.rate',['rate' => $course->getRate()])
@@ -54,7 +55,7 @@
                                         @if($hasBought and $course->isProgressing())
                                             {{ trans('public.course_learning_passed',['percent' => $percent]) }}
                                         @else
-                                            {{ $course->sales_count }}/{{ $course->capacity }} {{ trans('quiz.students') }}
+                                            {{-- {{ $course->sales_count }}/{{ $course->capacity }} {{ trans('quiz.students') }} --}}
                                         @endif
                                     @else
                                         {{ trans('public.course_learning_passed',['percent' => $percent]) }}
@@ -124,7 +125,7 @@
                             @if(!empty($course->tickets))
                                 @foreach($course->tickets as $ticket)
 
-                                    <div class="form-check mt-20">
+                                    {{-- <div class="form-check mt-20">
                                         <input class="form-check-input" @if(!$ticket->isValid()) disabled @endif type="radio" data-discount="{{ $ticket->discount }}" value="{{ ($ticket->isValid()) ? $ticket->id : '' }}"
                                                name="ticket_id"
                                                id="courseOff{{ $ticket->id }}">
@@ -132,12 +133,12 @@
                                             <span class="font-16 font-weight-500 text-dark-blue">{{ $ticket->title }} @if(!empty($ticket->discount)) ({{ $ticket->discount }}% {{ trans('public.off') }}) @endif</span>
                                             <span class="font-14 text-gray">{{ $ticket->getSubTitle() }}</span>
                                         </label>
-                                    </div>
+                                    </div> --}}
                                 @endforeach
                             @endif
 
                             @if($course->price > 0)
-                                <div id="priceBox" class="d-flex align-items-center justify-content-center mt-20 {{ !empty($activeSpecialOffer) ? ' flex-column ' : '' }}">
+                                {{-- <div id="priceBox" class="d-flex align-items-center justify-content-center mt-20 {{ !empty($activeSpecialOffer) ? ' flex-column ' : '' }}">
                                     <div class="text-center">
                                         @php
                                             $realPrice = handleCoursePagePrice($course->price);
@@ -168,7 +169,7 @@
                                             @endif
                                         </div>
                                     @endif
-                                </div>
+                                </div> --}}
                             @else
                                 <div class="d-flex align-items-center justify-content-center mt-20">
                                     {{-- <span class="font-36 text-primary">{{ trans('public.free') }}</span> --}}
@@ -183,7 +184,7 @@
                             <div class="mt-20 d-flex flex-column">
                                 @if($userHasBought)
                                     {{-- <a href="{{ $course->getLearningPageUrl() }}" class="btn btn-primary">{{ trans('panel.purchased') }}</a> --}}
-                                    <a href="{{ $course->getLearningPageUrl() }}" class="btn btn-primary">Enrolled</a>
+                                    <a href="{{ $course->getLearningPageUrl() }}" class="btn btn-primary">Continue</a>
                                 @elseif($course->price > 0)
                                     <button type="{{ $canSale ? 'submit' : 'button' }}" @if(!$canSale) disabled @endif class="btn btn-primary">
                                         {{-- {{ trans('public.add_to_cart') }} --}}
@@ -220,12 +221,12 @@
                                 </div>
                             @endif
 
-                            @if($course->quizzes->where('certificate', 1)->count() > 0)
+                            {{-- @if($course->quizzes->where('certificate', 1)->count() > 0)
                                 <div class="mt-20 d-flex align-items-center text-gray">
                                     <i data-feather="award" width="20" height="20"></i>
                                     <span class="ml-5 font-14 font-weight-500">{{ trans('webinars.official_certificate') }}</span>
                                 </div>
-                            @endif
+                            @endif --}}
 
                             @if($course->quizzes->where('status', \App\models\Quiz::ACTIVE)->count() > 0)
                                 <div class="mt-20 d-flex align-items-center text-gray">
@@ -234,12 +235,12 @@
                                 </div>
                             @endif
 
-                            @if($course->support)
+                            {{-- @if($course->support)
                                 <div class="mt-20 d-flex align-items-center text-gray">
                                     <i data-feather="headphones" width="20" height="20"></i>
                                     <span class="ml-5 font-14 font-weight-500">{{ trans('webinars.instructor_support') }}</span>
                                 </div>
-                            @endif
+                            @endif --}}
                         </div>
 
                         {{-- <div class="mt-40 p-10 rounded-sm border row align-items-center favorites-share-box">
@@ -273,7 +274,7 @@
                     </div>
                 </div>
 
-                @if($course->teacher->offline)
+                {{-- @if($course->teacher->offline)
                     <div class="rounded-lg shadow-sm mt-35 d-flex">
                         <div class="offline-icon offline-icon-left d-flex align-items-stretch">
                             <div class="d-flex align-items-center">
@@ -286,7 +287,7 @@
                             <p class="font-14 font-weight-500 text-gray mt-15">{{ $course->teacher->offline_message }}</p>
                         </div>
                     </div>
-                @endif
+                @endif --}}
 
                 <div class="rounded-lg shadow-sm mt-35 px-25 py-20">
                     <h3 class="sidebar-title font-16 text-secondary font-weight-bold">{{ trans('webinars.'.$course->type) .' '. trans('webinars.specifications') }}</h3>

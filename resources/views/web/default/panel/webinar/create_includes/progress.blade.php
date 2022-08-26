@@ -10,10 +10,10 @@
             'icon' => 'paper_plus'
         ],
 
-        // 3 => [
-        //     'name' => 'pricing',
-        //     'icon' => 'wallet'
-        // ],
+        3 => [
+            'name' => 'content',
+            'icon' => 'wallet'
+        ],
 
         4 => [
             'name' => 'content',
@@ -31,7 +31,8 @@
         ],
 
         7 => [
-            'name' => 'quiz_certificate',
+            // 'name' => 'quiz_certificate',
+            'name' => 'quiz',
             'icon' => 'ticket_star'
         ],
 
