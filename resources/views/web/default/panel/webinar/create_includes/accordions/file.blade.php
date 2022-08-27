@@ -8,7 +8,8 @@
                 <i data-feather="{{ !empty($file) ? $file->getIconByType() : 'file' }}" class=""></i>
             </span>
 
-                <div class="font-weight-bold text-dark-blue d-block">{{ !empty($file) ? $file->title . ($file->accessibility == 'free' ? " (". trans('public.free') .")" : '') : trans('public.add_new_files') }}</div>
+                {{-- <div class="font-weight-bold text-dark-blue d-block">{{ !empty($file) ? $file->title . ($file->accessibility == 'free' ? " (". trans('public.free') .")" : '') : trans('public.add_new_files') }}</div> --}}
+                <div class="font-weight-bold text-dark-blue d-block">{{ !empty($file) ? $file->title . ($file->accessibility == 'free' ? "" : '') : trans('public.add_new_files') }}</div>
             </div>
 
             <div class="d-flex align-items-center">
