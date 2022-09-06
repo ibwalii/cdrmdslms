@@ -30,7 +30,7 @@
                     <h4 class="text-dark font-weight-normal">{{ trans('auth.welcome') }} <span class="font-weight-bold">{{ $siteGeneralSettings['site_name'] ?? '' }} {{ trans('auth.admin_panel') }}</span></h4>
 
                     <!-- <p class="text-muted">{{ trans('auth.admin_tagline') }}</p> -->
-                    <p class="text-muted">Only authorized access can!!</p>
+                    <p class="text-muted">Only authorized access</p>
 
                     <form method="POST" action="{{url('/admin/login')}}" class="needs-validation" novalidate="">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
