@@ -8,7 +8,7 @@
 @section('content')
     <section class="">
         <div class="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row">
-            <h1 class="section-title">{{ trans('panel.dashboard') }}</h1>
+            <h1 class="section-title">{{ trans('panel.dashboard') }} ii</h1>
 
             {{-- @if(!$authUser->isUser())
                 <div class="d-flex align-items-center flex-row-reverse flex-md-row justify-content-start justify-content-md-center mt-20 mt-md-0">
