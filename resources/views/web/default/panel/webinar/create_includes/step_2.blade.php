@@ -164,7 +164,7 @@
     </div>
 </div>
 
-<div class="form-group mt-15 {{ (!empty($webinarCategoryFilters) and count($webinarCategoryFilters)) ? '' : 'd-none' }}" id="categoriesFiltersContainer">
+<!-- <div class="form-group mt-15 {{ (!empty($webinarCategoryFilters) and count($webinarCategoryFilters)) ? '' : 'd-none' }}" id="categoriesFiltersContainer">
     <span class="input-label d-block">{{ trans('public.category_filters') }}</span>
     <div id="categoriesFiltersCard" class="row mt-20">
 
@@ -198,7 +198,7 @@
         @endif
 
     </div>
-</div>
+</div> -->
 
 @push('scripts_bottom')
     <script src="/assets/default/vendors/select2/select2.min.js"></script>

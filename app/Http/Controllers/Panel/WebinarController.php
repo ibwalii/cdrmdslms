@@ -564,9 +564,9 @@ class WebinarController extends Controller
 
         if ($currentStep == 2) {
             $rules = [
-                'category_id' => 'required',
+                // 'category_id' => 'required',
                 'duration' => 'required',
-                'partners' => 'required_if:partner_instructor,on',
+                // 'partners' => 'required_if:partner_instructor,on',
             ];
 
             if ($webinar->isWebinar()) {
@@ -630,9 +630,9 @@ class WebinarController extends Controller
                 unset($data['partners']);
             }
 
-            if ($data['category_id'] !== $webinar->category_id) {
-                WebinarFilterOption::where('webinar_id', $webinar->id)->delete();
-            }
+            // if ($data['category_id'] !== $webinar->category_id) {
+            //     WebinarFilterOption::where('webinar_id', $webinar->id)->delete();
+            // }
         }
 
         if ($currentStep == 3) {
