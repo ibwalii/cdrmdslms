@@ -7,18 +7,6 @@
 <div class="row">
     <div class="col-12 col-md-6 mt-15">
 
-        @if($webinar->isWebinar())
-            <div class="form-group mt-15">
-                <label class="input-label">{{ trans('public.capacity') }}</label>
-                <input type="number" name="capacity" value="{{ (!empty($webinar) and !empty($webinar->capacity)) ? $webinar->capacity : old('capacity') }}" class="form-control @error('capacity')  is-invalid @enderror" placeholder="{{ trans('forms.capacity_placeholder') }}"/>
-                @error('capacity')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
-            </div>
-        @endif
-
         <div class="row mt-15">
 
             @if($webinar->isWebinar())
