@@ -10,7 +10,7 @@
         </div>
 
         <div class="user-name ml-15">
-            <h3 class="font-16 font-weight-bold">{{ $authUser->full_name }} Yes</h3>
+            <h3 class="font-16 font-weight-bold">{{ $authUser->full_name }}</h3>
         </div>
     </div>
 
