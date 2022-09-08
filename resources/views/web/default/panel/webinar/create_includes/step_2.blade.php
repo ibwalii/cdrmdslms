@@ -137,8 +137,7 @@
             <input type="text" name="tags" data-max-tag="5" value="{{ !empty($webinar) ? implode(',',$webinarTags) : '' }}" class="form-control inputtags" placeholder="{{ trans('public.type_tag_name_and_press_enter') }} ({{ trans('forms.max') }} : 5)"/>
         </div>
 
-
-        <div class="form-group mt-15">
+        <!-- <div class="form-group mt-15">
             <label class="input-label">{{ trans('public.category') }}</label>
 
             <select id="categories" class="custom-select @error('category_id')  is-invalid @enderror" name="category_id" required>
@@ -160,7 +159,7 @@
                 {{ $message }}
             </div>
             @enderror
-        </div>
+        </div> -->
 
     </div>
 </div>
