@@ -351,7 +351,7 @@ class WebinarController extends Controller
             'image_cover' => $data['image_cover'],
             'video_demo' => $data['video_demo'],
             'video_demo_source' => $data['video_demo'] ? $data['video_demo_source'] : null,
-            'status' => ((!empty($data['draft']) and $data['draft'] == 1) or (!empty($data['get_next']) and $data['get_next'] == 1)) ? Webinar::$isDraft : Webinar::$pending,
+            'status' => ((!empty($data['draft']) and $data['draft'] == 1) or (!empty($data['get_next']) and $data['get_next'] == 1)) ? Webinar::$isDraft : Webinar::$active,
             'created_at' => time(),
             'level' => $data['level'],
             'semester' => $data['semester'],
@@ -575,7 +575,7 @@ class WebinarController extends Controller
         $this->validate($request, $rules);
 
 
-        $data['status'] = ($isDraft or $webinarRulesRequired) ? Webinar::$isDraft : Webinar::$pending;
+        $data['status'] = ($isDraft or $webinarRulesRequired) ? Webinar::$isDraft : Webinar::$active;
         $data['updated_at'] = time();
 
         if ($currentStep == 1) {
@@ -759,7 +759,7 @@ class WebinarController extends Controller
 
             $new['created_at'] = time();
             $new['updated_at'] = time();
-            $new['status'] = Webinar::$pending;
+            $new['status'] = Webinar::$active;
 
             $new['slug'] = Webinar::makeSlug($title);
 
