@@ -364,7 +364,7 @@ class WebinarController extends Controller
             ], [
                 'title' => $data['title'],
                 'description' => $data['description'],
-                // 'seo_description' => $data['seo_description'],
+                // 
             ]);
         }
 
@@ -680,7 +680,7 @@ class WebinarController extends Controller
             ], [
                 'title' => $data['title'],
                 'description' => $data['description'],
-                'seo_description' => $data['seo_description'],
+                
             ]);
         }
 
