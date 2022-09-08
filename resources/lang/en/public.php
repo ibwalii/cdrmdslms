@@ -191,7 +191,7 @@ return [
 
     'message_to_reviewer' => 'Message to reviewer',
 
-    'send_for_review' => 'Send for Review',
+    'send_for_review' => 'Add Course',
     'save_as_draft' => 'Save as Draft',
     'draft' => 'Draft',
     'waiting' => 'Waiting',
