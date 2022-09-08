@@ -35,7 +35,7 @@
                     <a href="" class="btn btn-sm btn-primary disabled">{{ trans('webinars.previous') }}</a>
                 @endif
 
-                <button type="button" id="getNextStep" class="btn btn-sm btn-primary ml-15" @if($currentStep >= 8) disabled @endif>{{ trans('webinars.next') }}</button>
+                <button type="button" id="getNextStep" class="btn btn-sm btn-primary ml-15" @if($currentStep >= 6) disabled @endif>{{ trans('webinars.next') }}</button>
             </div>
 
             <div class="mt-20 mt-md-0">
