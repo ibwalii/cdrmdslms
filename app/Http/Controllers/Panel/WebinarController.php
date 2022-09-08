@@ -323,7 +323,6 @@ class WebinarController extends Controller
             'semester' => 'required',
             'thumbnail' => 'required',
             'image_cover' => 'required',
-            'description' => 'required',
         ];
 
         if (!$user->isTeacher()) {
@@ -559,7 +558,7 @@ class WebinarController extends Controller
                 'title' => 'required|max:255',
                 'thumbnail' => 'required',
                 'image_cover' => 'required',
-                'description' => 'required',
+                
             ];
         }
 
