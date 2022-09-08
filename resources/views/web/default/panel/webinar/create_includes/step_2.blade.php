@@ -90,13 +90,13 @@
             </div>
         @endif
 
-        <div class="form-group mt-30 d-flex align-items-center justify-content-between">
+        <!-- <div class="form-group mt-30 d-flex align-items-center justify-content-between">
             <label class="cursor-pointer input-label" for="supportSwitch">{{ trans('webinars.supported_class') }}</label>
             <div class="custom-control custom-switch">
                 <input type="checkbox" name="support" class="custom-control-input" id="supportSwitch" {{ ((!empty($webinar) && $webinar->support) or old('support') == 'on') ? 'checked' :  '' }}>
                 <label class="custom-control-label" for="supportSwitch"></label>
             </div>
-        </div>
+        </div> -->
 
         <div class="form-group mt-30 d-flex align-items-center justify-content-between">
             <label class="cursor-pointer input-label" for="downloadableSwitch">{{ trans('home.downloadable') }}</label>
