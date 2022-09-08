@@ -426,12 +426,6 @@ class WebinarController extends Controller
             $data['categories'] = $categories;
         } elseif ($step == 3) {
             $query->with([
-                'tickets' => function ($query) {
-                    $query->orderBy('order', 'desc');
-                },
-            ]);
-        } elseif ($step == 4) {
-            $query->with([
                 'chapters' => function ($query) {
                     $query->orderBy('order', 'asc');
                     $query->with([
@@ -452,7 +446,7 @@ class WebinarController extends Controller
                     ]);
                 },
             ]);
-        } elseif ($step == 5) {
+        } elseif ($step == 4) {
             $query->with([
                 'prerequisites' => function ($query) {
                     $query->with(['prerequisiteWebinar' => function ($qu) {
@@ -462,13 +456,13 @@ class WebinarController extends Controller
                     }])->orderBy('order', 'asc');
                 }
             ]);
-        } elseif ($step == 6) {
+        } elseif ($step == 5) {
             $query->with([
                 'faqs' => function ($query) {
                     $query->orderBy('order', 'asc');
                 }
             ]);
-        } elseif ($step == 7) {
+        } elseif ($step == 6) {
             $query->with([
                 'quizzes',
                 'chapters' => function ($query) {
@@ -483,8 +477,7 @@ class WebinarController extends Controller
                 ->get();
 
             $data['teacherQuizzes'] = $teacherQuizzes;
-        }
-
+        } 
 
         $webinar = $query->first();
 
@@ -558,7 +551,6 @@ class WebinarController extends Controller
                 'title' => 'required|max:255',
                 'thumbnail' => 'required',
                 'image_cover' => 'required',
-                
             ];
         }
 
@@ -571,14 +563,14 @@ class WebinarController extends Controller
 
             if ($webinar->isWebinar()) {
                 $rules['start_date'] = 'required|date';
-                $rules['capacity'] = 'required|integer';
+                // $rules['capacity'] = 'required|integer';
             }
         }
 
         $webinarRulesRequired = false;
-        if (($currentStep == 8 and !$getNextStep and !$isDraft) or (!$getNextStep and !$isDraft)) {
-            $webinarRulesRequired = empty($data['rules']);
-        }
+        // if (($currentStep == 6 and !$getNextStep and !$isDraft) or (!$getNextStep and !$isDraft)) {
+        //     $webinarRulesRequired = empty($data['rules']);
+        // }
 
         $this->validate($request, $rules);
 
@@ -600,16 +592,16 @@ class WebinarController extends Controller
 
         if ($currentStep == 2) {
 
-            if (!empty($data['capacity'])) {
-                $userPackage = new UserPackage();
-                $userCoursesCapacityLimited = $userPackage->checkPackageLimit('courses_capacity', $data['capacity']);
+            // if (!empty($data['capacity'])) {
+            //     $userPackage = new UserPackage();
+            //     $userCoursesCapacityLimited = $userPackage->checkPackageLimit('courses_capacity', $data['capacity']);
 
-                if ($userCoursesCapacityLimited) {
-                    session()->put('registration_package_limited', $userCoursesCapacityLimited);
+            //     if ($userCoursesCapacityLimited) {
+            //         session()->put('registration_package_limited', $userCoursesCapacityLimited);
 
-                    return redirect()->back()->withInput($data);
-                }
-            }
+            //         return redirect()->back()->withInput($data);
+            //     }
+            // }
 
             if ($webinar->isWebinar()) {
                 if (empty($data['timezone']) or !getFeaturesSettings('timezone_in_create_webinar')) {
@@ -621,14 +613,14 @@ class WebinarController extends Controller
                 $data['start_date'] = $startDate->getTimestamp();
             }
 
-            $data['support'] = !empty($data['support']) ? true : false;
+            // $data['support'] = !empty($data['support']) ? true : false;
             $data['downloadable'] = !empty($data['downloadable']) ? true : false;
-            $data['partner_instructor'] = !empty($data['partner_instructor']) ? true : false;
+            // $data['partner_instructor'] = !empty($data['partner_instructor']) ? true : false;
 
-            if (empty($data['partner_instructor'])) {
-                WebinarPartnerTeacher::where('webinar_id', $webinar->id)->delete();
-                unset($data['partners']);
-            }
+            // if (empty($data['partner_instructor'])) {
+            //     WebinarPartnerTeacher::where('webinar_id', $webinar->id)->delete();
+            //     unset($data['partners']);
+            // }
 
             // if ($data['category_id'] !== $webinar->category_id) {
             //     WebinarFilterOption::where('webinar_id', $webinar->id)->delete();
@@ -694,7 +686,7 @@ class WebinarController extends Controller
             $data['ajax'],
             $data['title'],
             $data['description'],
-            $data['seo_description'],
+            // $data['seo_description'],
         );
 
         $webinar->update($data);
@@ -703,7 +695,7 @@ class WebinarController extends Controller
         if ($getNextStep) {
             $nextStep = (!empty($getStep) and $getStep > 0) ? $getStep : $currentStep + 1;
 
-            $url = '/panel/webinars/' . $webinar->id . '/step/' . (($nextStep <= 8) ? $nextStep : 8);
+            $url = '/panel/webinars/' . $webinar->id . '/step/' . (($nextStep <= 6) ? $nextStep : 6);
         }
 
         if ($webinarRulesRequired) {
