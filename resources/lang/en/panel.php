@@ -261,7 +261,7 @@ return [
 
     'remaining' => 'Remained',
 
-    'organization_classes' => 'Organization courses',
+    'organization_classes' => 'All Courses',
     'filter_classes' => 'Filter courses',
     'only_not_free_classes' => 'Only paid courses',
     'only_free_classes' => 'Only free courses',
