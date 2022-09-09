@@ -1,6 +1,6 @@
 <section>
     <h2 class="section-title after-line">{{ trans('financial.account') }}</h2>
-
+    
     <div class="row mt-20">
         <div class="col-12 col-lg-4">
             <div class="form-group">
@@ -67,6 +67,8 @@
                 </div>
                 @enderror
             </div>
+            
+            @if($user_type != 'instructors')        
             <div class="form-group mt-15">
                 <label class="input-label">{{ trans('Level') }}</label>
                 {{-- <input type="text" name="title" value="{{ (!empty($webinar) and !empty($webinar->translate($locale))) ? $webinar->translate($locale)->title : old('title') }}" class="form-control @error('title')  is-invalid @enderror" placeholder=""/> --}}
@@ -99,6 +101,7 @@
                 </div>
                 @enderror
             </div>
+            @endif
             <div class="form-group">
                 <label class="input-label">{{ trans('update.timezone') }}</label>
                 <select name="timezone" class="form-control select2" data-allow-clear="false">
