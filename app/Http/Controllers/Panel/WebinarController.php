@@ -74,10 +74,21 @@ class WebinarController extends Controller
     public function organizationClasses(Request $request)
     {
         $user = auth()->user();
+        
+        $user_role = $user->role_name;
 
         if (!empty($user->organ_id)) {
-            $query = Webinar::where('creator_id', $user->organ_id)
-                ->where('status', 'active');
+            
+            if($user_role == 'user'){
+                $student_level = $user->level;
+                
+                $query = Webinar::where('creator_id', $user->organ_id)
+                ->where('status', 'active')->where('level', '<=' , $student_level);
+                
+            }else{
+                $query = Webinar::where('creator_id', $user->organ_id)
+                    ->where('status', 'active');
+            }
 
             $query = $this->organizationClassesFilters($query, $request);
 
