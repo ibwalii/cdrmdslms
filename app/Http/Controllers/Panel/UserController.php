@@ -556,6 +556,7 @@ class UserController extends Controller
             $referralSettings = getReferralSettings();
             $usersAffiliateStatus = (!empty($referralSettings) and !empty($referralSettings['users_affiliate_status']));
 
+            
             $user = User::create([
                 'role_name' => $role_name,
                 'role_id' => $role_id,
