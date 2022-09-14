@@ -127,10 +127,12 @@
             <div class="collapse {{ (request()->is('panel/webinars') or request()->is('panel/webinars/*')) ? 'show' : '' }}" id="webinarCollapse">
                 <ul class="sidenav-item-collapse">
                     @if($authUser->isOrganization() || $authUser->isTeacher())
+                        
+                        @if($authUser->isOrganization())
                         <li class="mt-5 {{ (request()->is('panel/webinars/new')) ? 'active' : '' }}">
                             <a href="/panel/webinars/new">{{ trans('public.new') }}</a>
                         </li>
-
+                        @endif
                         <li class="mt-5 {{ (request()->is('panel/webinars')) ? 'active' : '' }}">
                             <a href="/panel/webinars">{{ trans('panel.my_classes') }}</a>
                         </li>
