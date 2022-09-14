@@ -175,10 +175,10 @@
                                         <span class="stat-value">{{ $webinar->id }}</span>
                                     </div>
 
-                                    <div class="d-flex align-items-start flex-column mt-20 mr-15">
+                                    <!-- <div class="d-flex align-items-start flex-column mt-20 mr-15">
                                         <span class="stat-title">{{ trans('public.category') }}:</span>
                                         <span class="stat-value">{{ !empty($webinar->category_id) ? $webinar->category->title : '' }}</span>
-                                    </div>
+                                    </div> -->
 
                                     @if($webinar->isProgressing() and !empty($nextSession))
                                         <div class="d-flex align-items-start flex-column mt-20 mr-15">
