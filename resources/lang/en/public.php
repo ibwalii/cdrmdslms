@@ -65,6 +65,7 @@ return [
 
     'controls' => 'Actions',
     'phone' => 'Phone',
+    'modules' => 'Modules/Courses',
     'mobile' => 'Phone',
     'email' => 'Email',
 
