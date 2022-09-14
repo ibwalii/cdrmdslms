@@ -23,7 +23,7 @@
                 @enderror
             </div>
 
-            <div class="form-group">
+            {{--<div class="form-group">
                 <label class="input-label">{{ trans('auth.password') }}</label>
                 <input type="password" name="password" value="{{ old('password') }}" class="form-control @error('password')  is-invalid @enderror" placeholder=""/>
                 @error('password')
@@ -42,6 +42,7 @@
                 </div>
                 @enderror
             </div>
+            --}}
 
             <div class="form-group">
                 <label class="input-label">{{ trans('public.mobile') }}</label>
@@ -53,7 +54,7 @@
                 @enderror
             </div>
 
-            <div class="form-group">
+            {{--<div class="form-group">
                 <label class="input-label">{{ trans('auth.language') }}</label>
                 <select name="language" class="form-control">
                     <option value="">{{ trans('auth.language') }}</option>
@@ -66,7 +67,7 @@
                     {{ $message }}
                 </div>
                 @enderror
-            </div>
+            </div>--}}
             
             @if($user_type != 'instructors')        
             <div class="form-group mt-15">
@@ -102,7 +103,7 @@
                 @enderror
             </div>
             @endif
-            <div class="form-group">
+            {{--<div class="form-group">
                 <label class="input-label">{{ trans('update.timezone') }}</label>
                 <select name="timezone" class="form-control select2" data-allow-clear="false">
                     <option value="" {{ empty($user->timezone) ? 'selected' : '' }} disabled>{{ trans('public.select') }}</option>
@@ -115,7 +116,7 @@
                     {{ $message }}
                 </div>
                 @enderror
-            </div>
+            </div>--}}
 
             <div class="form-group mt-30 d-flex align-items-center justify-content-between">
                 <label class="cursor-pointer input-label" for="newsletterSwitch">{{ trans('auth.join_newsletter') }}</label>

@@ -542,12 +542,18 @@ class UserController extends Controller
         $organization = auth()->user();
 
         if ($organization->isOrganization() and in_array($user_type, $valid_type)) {
+            
             $this->validate($request, [
                 'email' => 'required|string|email|max:255|unique:users',
                 'full_name' => 'required|string',
                 'mobile' => 'required|numeric',
-                'password' => 'required|confirmed|min:6',
             ]);
+
+            if($user_type == 'instructors'){
+                $password = 'instructors';
+            }else if($user_type == 'students'){
+                $password = 'students';
+            }
 
             $data = $request->all();
             $role_name = ($user_type == 'instructors') ? Role::$teacher : Role::$user;
@@ -565,10 +571,11 @@ class UserController extends Controller
                 'semester' => $request->semester,
                 'email' => $data['email'],
                 'organ_id' => $organization->id,
-                'password' => Hash::make($data['password']),
+                'password' => Hash::make($password),
                 'full_name' => $data['full_name'],
                 'mobile' => $data['mobile'],
-                'language' => $data['language'],
+                'language' => 'EN',
+                'timezone' => 'Africa/Lagos',
                 'affiliate' => $usersAffiliateStatus,
                 'newsletter' => (!empty($data['join_newsletter']) and $data['join_newsletter'] == 'on'),
                 'public_message' => (!empty($data['public_messages']) and $data['public_messages'] == 'on'),
