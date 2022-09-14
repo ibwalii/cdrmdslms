@@ -560,6 +560,7 @@ class UserController extends Controller
             $user = User::create([
                 'role_name' => $role_name,
                 'role_id' => $role_id,
+                'verified' => 1,
                 'level' => $request->level,
                 'semester' => $request->semester,
                 'email' => $data['email'],
