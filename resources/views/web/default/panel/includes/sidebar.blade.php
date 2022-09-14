@@ -142,7 +142,7 @@
                         </li> --}}
                     @endif
 
-                    @if(!empty($authUser->organ_id))
+                    @if(!empty($authUser->organ_id) && $authUser->isOrganization())
                         <li class="mt-5 {{ (request()->is('panel/webinars/organization_classes')) ? 'active' : '' }}">
                             <a href="/panel/webinars/organization_classes">{{ trans('panel.organization_classes') }}</a>
                         </li>
