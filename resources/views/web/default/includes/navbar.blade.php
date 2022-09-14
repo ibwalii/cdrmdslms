@@ -66,7 +66,7 @@
                         </li>
                     @endif --}}
 
-                    @if(!empty($navbarPages) and count($navbarPages))
+                    {{-- @if(!empty($navbarPages) and count($navbarPages))
                         @foreach($navbarPages as $navbarPage)
                             @if($navbarPage['title']!='Courses')
                                 <li class="nav-item">
@@ -74,7 +74,7 @@
                             </li>
                             @endif
                         @endforeach
-                    @endif
+                    @endif --}}
                 </ul>
             </div>
 
