@@ -167,6 +167,11 @@
                                         <span class="stat-value">{{ $webinar->level }}</span>
                                     </div>
 
+                                    <div class="d-flex align-items-start flex-column mt-20 mr-15">
+                                        <span class="stat-title">{{ trans('public.semester') }}:</span>
+                                        <span class="stat-value">{{ $webinar->semester }}</span>
+                                    </div>
+
                                     {{-- <div class="d-flex align-items-start flex-column mt-20 mr-15">
                                         <span class="stat-title">{{ trans('public.category') }}:</span>
                                         <span class="stat-value">{{ !empty($webinar->category_id) ? $webinar->category->title : '' }}</span>

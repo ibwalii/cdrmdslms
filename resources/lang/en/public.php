@@ -207,6 +207,7 @@ return [
     'history' => 'History',
     'item_id' => 'Item ID',
     'level' => 'Level',
+    'semester' => 'Semester',
     'export_list' => 'Export students list',
     'duplicate' => 'Duplicate',
 
