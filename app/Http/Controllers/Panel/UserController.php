@@ -160,8 +160,8 @@ class UserController extends Controller
                     'email' => $data['email'],
                     'full_name' => $data['full_name'],
                     'mobile' => $data['mobile'],
-                    'language' => $data['language'],
-                    'timezone' => $data['timezone'] ?? null,
+                    'language' => 'EN',
+                    'timezone' => 'Africa/Lagos',
                     'newsletter' => $joinNewsletter,
                     'public_message' => (!empty($data['public_messages']) and $data['public_messages'] == 'on'),
                 ];

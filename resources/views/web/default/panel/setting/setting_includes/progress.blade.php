@@ -25,10 +25,10 @@
             'icon' => 'experiences'
         ],
 
-        6 => [
-            'lang' => 'public.occupations',
-            'icon' => 'skills'
-        ],
+        //6 => [
+        //    'lang' => 'public.occupations',
+        //    'icon' => 'skills'
+        //],
 
         // 7 => [
         //     'lang' => 'public.identity_and_financial',
@@ -38,15 +38,15 @@
 
     if(!$user->isUser()) {
 
-        $progressSteps[8] =[
+        $progressSteps[6] =[
             'lang' => 'public.zoom_api',
             'icon' => 'zoom'
         ];
 
-        $progressSteps[9] =[
-            'lang' => 'public.extra_information',
-            'icon' => 'zoom'
-        ];
+        //$progressSteps[7] =[
+        //    'lang' => 'public.extra_information',
+        //    'icon' => 'zoom'
+        //];
     }
 
     $currentStep = empty($currentStep) ? 1 : $currentStep;
