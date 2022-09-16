@@ -59,7 +59,7 @@
                                     <th class="text-left text-gray">{{ trans('auth.name') }}</th>
                                     <th class="text-left text-gray">{{ trans('auth.email') }}</th>
                                     <th class="text-center text-gray">{{ trans('public.phone') }}</th>
-                                    <th class="text-center text-gray">{{ trans('webinars.webinars') }}</th>
+                                    <th class="text-center text-gray">{{ trans('public.modules') }}</th>
                                     <th class="text-center text-gray">{{ trans('quiz.quizzes') }}</th>
                                     {{-- <th class="text-center text-gray">{{ trans('panel.certificates') }}</th> --}}
                                     <th class="text-center text-gray">{{ trans('public.date') }}</th>
