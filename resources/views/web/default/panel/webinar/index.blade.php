@@ -243,6 +243,11 @@
                                             <span class="stat-title">{{ trans('webinars.teacher_name') }}:</span>
                                             <span class="stat-value">{{ $webinar->teacher->full_name }}</span>
                                         </div>
+                                    @else
+                                        <div class="d-flex align-items-start flex-column mt-20 mr-15">
+                                            <span class="stat-title">{{ trans('webinars.teacher_name') }}:</span>
+                                            <span class="stat-value">{{ $webinar->teacher->full_name }}</span>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
