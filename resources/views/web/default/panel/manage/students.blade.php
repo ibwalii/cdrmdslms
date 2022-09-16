@@ -57,6 +57,7 @@
                                 <thead>
                                 <tr>
                                     <th class="text-left text-gray">{{ trans('auth.name') }}</th>
+                                    <th class="text-left text-gray">{{ trans('public.level') }}</th>
                                     <th class="text-left text-gray">{{ trans('auth.email') }}</th>
                                     <th class="text-center text-gray">{{ trans('public.phone') }}</th>
                                     <th class="text-center text-gray">{{ trans('public.modules') }}</th>
@@ -80,6 +81,9 @@
                                                     <span class="mt-5 d-block font-12 text-{{ ($user->status == 'active') ? 'gray' : 'danger' }}">{{ ($user->status == 'active') ? trans('public.active') : trans('public.inactive') }}</span>
                                                 </div>
                                             </div>
+                                        </td>
+                                        <td class="align-middle">
+                                            <span class="text-dark-blue font-weight-500">{{ $user->level }}</span>
                                         </td>
                                         <td class="text-left">
                                             <div class="">
