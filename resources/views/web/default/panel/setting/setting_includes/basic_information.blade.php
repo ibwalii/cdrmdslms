@@ -3,6 +3,17 @@
     
     <div class="row mt-20">
         <div class="col-12 col-lg-4">
+            @if($user_type != 'instructors')
+            <div class="form-group">
+                <label class="input-label">{{ trans('public.matric') }}</label>
+                <input type="text" name="matric_no" value="{{ (!empty($user) and empty($new_user)) ? $user->matric_no : old('matric_no') }}" class="form-control @error('matric_no')  is-invalid @enderror" placeholder=""/>
+                @error('matric_no')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+            </div>
+            @endif
             <div class="form-group">
                 <label class="input-label">{{ trans('public.email') }}</label>
                 <input type="text" name="email" value="{{ (!empty($user) and empty($new_user)) ? $user->email : old('email') }}" class="form-control @error('email')  is-invalid @enderror" placeholder=""/>

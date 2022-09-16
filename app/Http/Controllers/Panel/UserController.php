@@ -157,6 +157,7 @@ class UserController extends Controller
                 $joinNewsletter = (!empty($data['join_newsletter']) and $data['join_newsletter'] == 'on');
 
                 $updateData = [
+                    'matric_no' => $data['matric_no'],
                     'email' => $data['email'],
                     'full_name' => $data['full_name'],
                     'mobile' => $data['mobile'],
@@ -567,6 +568,7 @@ class UserController extends Controller
                 'role_name' => $role_name,
                 'role_id' => $role_id,
                 'verified' => 1,
+                'matric_no' => $request->matric_no,
                 'level' => $request->level,
                 'semester' => $request->semester,
                 'email' => $data['email'],

@@ -67,6 +67,7 @@ return [
     'phone' => 'Phone',
     'modules' => 'Modules/Courses',
     'mobile' => 'Phone',
+    'matric' => 'Matric/ID No',
     'email' => 'Email',
 
     'add_time' => 'Add Time',
