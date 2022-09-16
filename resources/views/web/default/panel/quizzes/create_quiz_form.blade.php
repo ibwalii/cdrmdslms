@@ -91,13 +91,13 @@
                         </div>
                     </div>
 
-                    <div class="form-group mt-20 d-flex align-items-center justify-content-between">
+                    {{-- <div class="form-group mt-20 d-flex align-items-center justify-content-between">
                         <label class="cursor-pointer input-label" for="certificateSwitch{{ $quiz ?? '' }}">{{ trans('quiz.certificate_included') }}</label>
                         <div class="custom-control custom-switch">
                             <input type="checkbox" name="ajax[certificate]" class="js-ajax-certificate custom-control-input" id="certificateSwitch{{ $quiz ?? '' }}" {{ !empty($quiz) && $quiz->certificate ? 'checked' : ''}}>
                             <label class="custom-control-label" for="certificateSwitch{{ $quiz ?? '' }}"></label>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="form-group mt-20 d-flex align-items-center justify-content-between">
                         <label class="cursor-pointer input-label" for="statusSwitch{{ $quiz ?? '' }}">{{ trans('quiz.active_quiz') }}</label>
