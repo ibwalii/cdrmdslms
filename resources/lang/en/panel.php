@@ -21,7 +21,7 @@ return [
     'content_sales' => 'Course sales',
     'my_webinars' => 'My courses',
     'you_not_have_any_webinar' => 'No Course!',
-    'no_result_hint' => 'Create your first course and let others learn from you.',
+    'no_result_hint' => 'No Course assigned to you yet.',
     'choose_webinar' => 'Select a course',
     'certificates' => 'Certificates',
     'quizzes' => 'Quizzes',
