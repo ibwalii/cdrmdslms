@@ -39,7 +39,7 @@ return [
     'invited_teacher' => 'Invited instrcutor',
     'invited_by' => 'Invited by',
     'classes' => 'Courses',
-    'my_classes' => 'My courses',
+    'my_classes' => 'My Modules',
     'my_activity' => 'My activity',
     'download_sales' => 'Download Sales',
     'course_sales' => 'Course Sales',
