@@ -438,6 +438,7 @@ class UserController extends Controller
             $to = $request->get('to', null);
             $name = $request->get('name', null);
             $email = $request->get('email', null);
+            $level = $request->get('level', null);
             $type = request()->get('type', null);
 
             if (!empty($from) and !empty($to)) {
@@ -473,6 +474,10 @@ class UserController extends Controller
                 } elseif ($type == 'verified') {
                     $query->where('verified', true);
                 }
+            }
+            
+            if (!empty($level)) {
+                $query->where('level', $level);
             }
 
             $users = $query->orderBy('created_at', 'desc')
