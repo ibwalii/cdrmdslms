@@ -3,16 +3,18 @@
     
     <div class="row mt-20">
         <div class="col-12 col-lg-4">
-            @if($user_type != 'instructors')
-            <div class="form-group">
-                <label class="input-label">{{ trans('public.matric') }}</label>
-                <input type="text" name="matric_no" value="{{ (!empty($user) and empty($new_user)) ? $user->matric_no : old('matric_no') }}" class="form-control @error('matric_no')  is-invalid @enderror" placeholder=""/>
-                @error('matric_no')
-                <div class="invalid-feedback">
-                    {{ $message }}
+            @if(Auth::user()->role_name != 'organization')
+                @if($user_type != 'instructors')
+                <div class="form-group">
+                    <label class="input-label">{{ trans('public.matric') }}</label>
+                    <input type="text" name="matric_no" value="{{ (!empty($user) and empty($new_user)) ? $user->matric_no : old('matric_no') }}" class="form-control @error('matric_no')  is-invalid @enderror" placeholder=""/>
+                    @error('matric_no')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
-                @enderror
-            </div>
+                @endif
             @endif
             <div class="form-group">
                 <label class="input-label">{{ trans('public.email') }}</label>
@@ -80,39 +82,41 @@
                 @enderror
             </div>--}}
             
-            @if($user_type != 'instructors')        
-            <div class="form-group mt-15">
-                <label class="input-label">{{ trans('Level') }}</label>
-                {{-- <input type="text" name="title" value="{{ (!empty($webinar) and !empty($webinar->translate($locale))) ? $webinar->translate($locale)->title : old('title') }}" class="form-control @error('title')  is-invalid @enderror" placeholder=""/> --}}
-                <select name="level" id="" class="form-control @error('level')  is-invalid @enderror">
-                    <option value="100">100 Level</option>
-                    <option value="200">200 Level</option>
-                    <option value="300">300 Level</option>
-                    <option value="400">400 Level</option>
-                    <option value="500">500 Level</option>
-                    <option value="600">600 Level</option>
-                    <option value="700">700 Level</option>
-                </select>
-                @error('level')
-                <div class="invalid-feedback">
-                    {{ $message }}
+            @if(Auth::user()->role_name != 'organization')
+                @if($user_type != 'instructors')        
+                <div class="form-group mt-15">
+                    <label class="input-label">{{ trans('Level') }}</label>
+                    {{-- <input type="text" name="title" value="{{ (!empty($webinar) and !empty($webinar->translate($locale))) ? $webinar->translate($locale)->title : old('title') }}" class="form-control @error('title')  is-invalid @enderror" placeholder=""/> --}}
+                    <select name="level" id="" class="form-control @error('level')  is-invalid @enderror">
+                        <option value="100">100 Level</option>
+                        <option value="200">200 Level</option>
+                        <option value="300">300 Level</option>
+                        <option value="400">400 Level</option>
+                        <option value="500">500 Level</option>
+                        <option value="600">600 Level</option>
+                        <option value="700">700 Level</option>
+                    </select>
+                    @error('level')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
-                @enderror
-            </div>
-            <div class="form-group mt-15">
-                <label class="input-label">{{ trans('Semester') }}</label>
-                {{-- <input type="text" name="title" value="{{ (!empty($webinar) and !empty($webinar->translate($locale))) ? $webinar->translate($locale)->title : old('title') }}" class="form-control @error('title')  is-invalid @enderror" placeholder=""/> --}}
-                <select name="semester" id="" class="form-control @error('semester')  is-invalid @enderror">
-                    <option value="First Semester">First Semester</option>
-                    <option value="Second Semester">Second Semester</option>
-                    <option value="Third Semester">Third Semester</option>
-                </select>
-                @error('semester')
-                <div class="invalid-feedback">
-                    {{ $message }}
+                <div class="form-group mt-15">
+                    <label class="input-label">{{ trans('Semester') }}</label>
+                    {{-- <input type="text" name="title" value="{{ (!empty($webinar) and !empty($webinar->translate($locale))) ? $webinar->translate($locale)->title : old('title') }}" class="form-control @error('title')  is-invalid @enderror" placeholder=""/> --}}
+                    <select name="semester" id="" class="form-control @error('semester')  is-invalid @enderror">
+                        <option value="First Semester">First Semester</option>
+                        <option value="Second Semester">Second Semester</option>
+                        <option value="Third Semester">Third Semester</option>
+                    </select>
+                    @error('semester')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
-                @enderror
-            </div>
+                @endif
             @endif
             {{--<div class="form-group">
                 <label class="input-label">{{ trans('update.timezone') }}</label>
