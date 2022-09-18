@@ -183,26 +183,6 @@ class UserController extends Controller
                     'bio' => $data['bio'],
                 ];
             } elseif ($step == 6) {
-                UserOccupation::where('user_id', $user->id)->delete();
-                if (!empty($data['occupations'])) {
-
-                    foreach ($data['occupations'] as $category_id) {
-                        UserOccupation::create([
-                            'user_id' => $user->id,
-                            'category_id' => $category_id
-                        ]);
-                    }
-                }
-            } elseif ($step == 7) {
-                $updateData = [
-                    'account_type' => $data['account_type'] ?? '',
-                    'iban' => $data['iban'] ?? '',
-                    'account_id' => $data['account_id'] ?? '',
-                    'identity_scan' => $data['identity_scan'] ?? '',
-                    'certificate' => $data['certificate'] ?? '',
-                    'address' => $data['address'] ?? '',
-                ];
-            } elseif ($step == 8) {
                 if (!$user->isUser() and !empty($data['zoom_jwt_token'])) {
                     UserZoomApi::updateOrCreate(
                         [
@@ -214,46 +194,77 @@ class UserController extends Controller
                         ]
                     );
                 }
-            } elseif ($step == 9) {
+                // UserOccupation::where('user_id', $user->id)->delete();
+                // if (!empty($data['occupations'])) {
 
-                $updateData = [
-                    "level_of_training" => !empty($data['level_of_training']) ? (new UserLevelOfTraining())->getValue($data['level_of_training']) : null,
-                    "meeting_type" => $data['meeting_type'] ?? null,
-                    "group_meeting" => (!empty($data['group_meeting']) and $data['group_meeting'] == 'on'),
-                    "country_id" => $data['country_id'] ?? null,
-                    "province_id" => $data['province_id'] ?? null,
-                    "city_id" => $data['city_id'] ?? null,
-                    "district_id" => $data['district_id'] ?? null,
-                    "location" => (!empty($data['latitude']) and !empty($data['longitude'])) ? DB::raw("POINT(" . $data['latitude'] . "," . $data['longitude'] . ")") : null,
-                ];
+                //     foreach ($data['occupations'] as $category_id) {
+                //         UserOccupation::create([
+                //             'user_id' => $user->id,
+                //             'category_id' => $category_id
+                //         ]);
+                //     }
+                // }
+            // } elseif ($step == 7) {
+            //     $updateData = [
+            //         'account_type' => $data['account_type'] ?? '',
+            //         'iban' => $data['iban'] ?? '',
+            //         'account_id' => $data['account_id'] ?? '',
+            //         'identity_scan' => $data['identity_scan'] ?? '',
+            //         'certificate' => $data['certificate'] ?? '',
+            //         'address' => $data['address'] ?? '',
+            //     ];
+            // } elseif ($step == 8) {
+            //     if (!$user->isUser() and !empty($data['zoom_jwt_token'])) {
+            //         UserZoomApi::updateOrCreate(
+            //             [
+            //                 'user_id' => $user->id,
+            //             ],
+            //             [
+            //                 'jwt_token' => $data['zoom_jwt_token'],
+            //                 'created_at' => time()
+            //             ]
+            //         );
+            //     }
+            // } elseif ($step == 9) {
 
-                $updateUserMeta = [
-                    "gender" => $data['gender'] ?? null,
-                    "age" => $data['age'] ?? null,
-                    "address" => $data['address'] ?? null,
-                ];
+            //     $updateData = [
+            //         "level_of_training" => !empty($data['level_of_training']) ? (new UserLevelOfTraining())->getValue($data['level_of_training']) : null,
+            //         "meeting_type" => $data['meeting_type'] ?? null,
+            //         "group_meeting" => (!empty($data['group_meeting']) and $data['group_meeting'] == 'on'),
+            //         "country_id" => $data['country_id'] ?? null,
+            //         "province_id" => $data['province_id'] ?? null,
+            //         "city_id" => $data['city_id'] ?? null,
+            //         "district_id" => $data['district_id'] ?? null,
+            //         "location" => (!empty($data['latitude']) and !empty($data['longitude'])) ? DB::raw("POINT(" . $data['latitude'] . "," . $data['longitude'] . ")") : null,
+            //     ];
 
-                foreach ($updateUserMeta as $name => $value) {
-                    $checkMeta = UserMeta::where('user_id', $user->id)
-                        ->where('name', $name)
-                        ->first();
+            //     $updateUserMeta = [
+            //         "gender" => $data['gender'] ?? null,
+            //         "age" => $data['age'] ?? null,
+            //         "address" => $data['address'] ?? null,
+            //     ];
 
-                    if (!empty($checkMeta)) {
-                        if (!empty($value)) {
-                            $checkMeta->update([
-                                'value' => $value
-                            ]);
-                        } else {
-                            $checkMeta->delete();
-                        }
-                    } else if (!empty($value)) {
-                        UserMeta::create([
-                            'user_id' => $user->id,
-                            'name' => $name,
-                            'value' => $value
-                        ]);
-                    }
-                }
+            //     foreach ($updateUserMeta as $name => $value) {
+            //         $checkMeta = UserMeta::where('user_id', $user->id)
+            //             ->where('name', $name)
+            //             ->first();
+
+            //         if (!empty($checkMeta)) {
+            //             if (!empty($value)) {
+            //                 $checkMeta->update([
+            //                     'value' => $value
+            //                 ]);
+            //             } else {
+            //                 $checkMeta->delete();
+            //             }
+            //         } else if (!empty($value)) {
+            //             UserMeta::create([
+            //                 'user_id' => $user->id,
+            //                 'name' => $name,
+            //                 'value' => $value
+            //             ]);
+            //         }
+            //     }
             }
 
             if (!empty($updateData)) {
