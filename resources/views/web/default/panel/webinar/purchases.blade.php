@@ -224,7 +224,7 @@
             'file_name' => 'student.png',
             'title' => trans('panel.no_result_purchases') ,
             'hint' => trans('panel.no_result_purchases_hint') ,
-            'btn' => ['url' => '/panel/webiner/organization_classes','text' => trans('panel.start_learning')]
+            'btn' => ['url' => '/panel/webinars/organization_classes','text' => trans('panel.start_learning')]
         ])
         @endif
     </section>
