@@ -149,10 +149,14 @@
                     @endif
 
                     @if($authUser->isUser())
-                    <li class="mt-5 {{ (request()->is('panel/webinars/purchases')) ? 'active' : '' }}">
-                        {{-- <a href="/panel/webinars/purchases">{{ trans('panel.my_purchases') }}</a> --}}
-                        <a href="/panel/webinars/purchases">My Modules</a>
-                    </li>
+                        @if(count($authUser->getPurchasedCoursesIds()) > 0)
+                            <li class="mt-5 {{ (request()->is('panel/webinars/purchases')) ? 'active' : '' }}">
+                                <a href="/panel/webinars/purchases">My Modules</a>
+                            </li>
+                        @endif
+                        <li class="mt-5 {{ (request()->is('panel/webinars/organization_classes')) ? 'active' : '' }}">
+                                <a href="/panel/webinars/organization_classes">{{trans('panel.start_learning')}}</a>
+                            </li>
                     @endif
 
                     @if($authUser->isOrganization() || $authUser->isTeacher())

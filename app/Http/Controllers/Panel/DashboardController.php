@@ -75,6 +75,7 @@ class DashboardController extends Controller
                 ->where('status', 'active')
                 ->get();
 
+            $data['webinarsIds'] = count($webinarsIds);
             $data['webinarsCount'] = count($webinars);
             $data['supportsCount'] = count($supports);
             $data['commentsCount'] = count($comments);

@@ -997,7 +997,7 @@ class WebinarController extends Controller
             'webinars' => $webinars,
             'allWebinarsCount' => $allWebinarsCount,
             'hours' => $hours,
-            'upComing' => $upComing
+            'upComing' => $upComing,
         ];
 
         return view(getTemplate() . '.panel.webinar.purchases', $data);
