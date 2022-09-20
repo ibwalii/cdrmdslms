@@ -600,6 +600,26 @@ class UserController extends Controller
                 'created_at' => time()
             ]);
 
+            if($role_name == 'teacher'){
+
+                $organization_id = $organization->id;
+                $user_email = $data['email'];
+                $time = time();
+
+                $get_organization_jwt = UserZoomApi::select('jwt_token')->where('user_id', $organization_id)->pluck('jwt_token')->first();
+                $get_new_instructor_id_from_users_table = User::select('id')->where('email', $user_email)->pluck('id')->first();
+
+                $store_new_instructor_jwt = UserZoomApi::updateOrCreate(
+                        [
+                            'user_id' => $get_new_instructor_id_from_users_table,
+                        ],
+                        [
+                            'jwt_token' => $get_organization_jwt,
+                            'created_at' => $time
+                        ]
+                    );
+            }
+
             return redirect('/panel/manage/' . $user_type . '/' . $user->id . '/edit');
         }
 
