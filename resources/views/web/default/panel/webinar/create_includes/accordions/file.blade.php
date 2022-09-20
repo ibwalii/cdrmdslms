@@ -85,10 +85,10 @@
                                         <label class="custom-control-label font-14 cursor-pointer" for="accessibilityRadio1_{{ !empty($file) ? $file->id : 'record' }}">{{ trans('public.free') }}</label>
                                     </div>
 
-                                    <div class="custom-control custom-radio ml-15">
+                                    {{--<div class="custom-control custom-radio ml-15">
                                         <input type="radio" name="ajax[{{ !empty($file) ? $file->id : 'new' }}][accessibility]" value="paid" @if(!empty($file) and $file->accessibility == 'paid') checked="checked" @endif id="accessibilityRadio2_{{ !empty($file) ? $file->id : 'record' }}" class="custom-control-input">
                                         <label class="custom-control-label font-14 cursor-pointer" for="accessibilityRadio2_{{ !empty($file) ? $file->id : 'record' }}">{{ trans('public.paid') }}</label>
-                                    </div>
+                                    </div>--}}
                                 </div>
 
                                 <div class="invalid-feedback"></div>
