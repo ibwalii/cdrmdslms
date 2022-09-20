@@ -101,7 +101,7 @@ class UserController extends Controller
             'cities' => $cities,
             'districts' => $districts,
         ];
-
+        
         return view(getTemplate() . '.panel.setting.index', $data);
     }
 
@@ -661,7 +661,6 @@ class UserController extends Controller
                     'userLanguages' => $userLanguages,
                     'currentStep' => $step,
                 ];
-
                 return view(getTemplate() . '.panel.setting.index', $data);
             }
         }

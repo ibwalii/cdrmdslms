@@ -3,7 +3,7 @@
     
     <div class="row mt-20">
         <div class="col-12 col-lg-4">
-            {{--@if(Auth::user()->role_name != 'organization')--}}
+            @if($pageTitle != 'Settings')
                 @if($user_type != 'instructors')
                 <div class="form-group">
                     <label class="input-label">{{ trans('public.matric') }}</label>
@@ -15,7 +15,7 @@
                     @enderror
                 </div>
                 @endif
-            {{--@endif--}}
+            @endif
             <div class="form-group">
                 <label class="input-label">{{ trans('public.email') }}</label>
                 <input type="text" name="email" value="{{ (!empty($user) and empty($new_user)) ? $user->email : old('email') }}" class="form-control @error('email')  is-invalid @enderror" placeholder=""/>
@@ -82,7 +82,7 @@
                 @enderror
             </div>--}}
             
-            {{--@if(Auth::user()->role_name != 'organization')--}}
+            @if($pageTitle != 'Settings')
                 @if($user_type != 'instructors')        
                 <div class="form-group mt-15">
                     <label class="input-label">{{ trans('Level') }}</label>
@@ -117,7 +117,7 @@
                     @enderror
                 </div>
                 @endif
-            {{--@endif--}}
+            @endif
             {{--<div class="form-group">
                 <label class="input-label">{{ trans('update.timezone') }}</label>
                 <select name="timezone" class="form-control select2" data-allow-clear="false">
