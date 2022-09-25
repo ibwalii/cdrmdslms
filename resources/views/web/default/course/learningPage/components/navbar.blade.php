@@ -39,7 +39,7 @@
         <div class="d-none align-items-center d-lg-flex">
             <a href="{{ $course->getUrl() }}" class="btn learning-page-navbar-btn btn-sm border-gray200">{{ trans('update.course_page') }}</a>
 
-            <a href="/panel/webinars/purchases" class="btn learning-page-navbar-btn btn-sm border-gray200 ml-10">{{ trans('update.my_courses') }}</a>
+            {{-- <a href="/panel/webinars/purchases" class="btn learning-page-navbar-btn btn-sm border-gray200 ml-10">{{ trans('update.my_courses') }}</a> --}}
         </div>
 
         <button id="collapseBtn" type="button" class="btn-transparent ml-20">
