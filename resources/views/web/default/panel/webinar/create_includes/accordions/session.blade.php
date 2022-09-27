@@ -49,10 +49,10 @@
                                     <label class="custom-control-label" for="localApi{{ !empty($session) ? $session->id : '' }}">{{ trans('webinars.session_local_api') }}</label>
                                 </div>
 
-                                <div class="custom-control custom-radio custom-control-inline">
+                                {{-- <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" name="ajax[{{ !empty($session) ? $session->id : 'new' }}][session_api]" id="bigBlueButton{{ !empty($session) ? $session->id : '' }}" value="big_blue_button" @if(!empty($session) and $session->session_api == 'big_blue_button') checked @endif class="js-api-input custom-control-input" {{ (!empty($session) and $session->session_api != 'local') ? 'disabled' :'' }}>
                                     <label class="custom-control-label" for="bigBlueButton{{ !empty($session) ? $session->id : '' }}">{{ trans('webinars.session_big_blue_button') }}</label>
-                                </div>
+                                </div> --}}
 
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" name="ajax[{{ !empty($session) ? $session->id : 'new' }}][session_api]" id="zoomApi{{ !empty($session) ? $session->id : '' }}" value="zoom" @if(!empty($session) and $session->session_api == 'zoom') checked @endif class="js-api-input custom-control-input" {{ (!empty($session) and $session->session_api != 'local') ? 'disabled' :'' }}>
