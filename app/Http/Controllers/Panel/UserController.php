@@ -619,7 +619,7 @@ class UserController extends Controller
         
             // In case the uploaded file path is to be stored in the database 
             $filepath = public_path($location . "/" . $filename);
-        
+            
             // Reading file
             $file = fopen($filepath, "r");
             $importData_arr = array(); // Read through the file and store the contents as an array
@@ -629,7 +629,7 @@ class UserController extends Controller
             while (($filedata = fgetcsv($file, 1000, ",")) !== FALSE) 
             {
                 $num = count($filedata);
-            
+                
                 // Skip first row (Remove below comment if you want to skip the first row)
                 if($i == 0) {
                     $i++;
@@ -639,37 +639,41 @@ class UserController extends Controller
                     $importData_arr[$i][] = $filedata[$c];
                 }
                 $i++;
-
-                $j = 0;
-                foreach($importData_arr as $importData) {
-                    $j++;
-                    try{
-                        DB::beginTransaction();
-                            User::create([
-                                'full_name' => $importData[1],
-                                'role_name' => $importData[2],
-                                'role_id' => $importData[3],
-                                'matric_no' => $importData[4],
-                                'level' => $importData[5],
-                                'semester' => $importData[6],
-                                'mobile' => $importData[7],
-                                'email' => $importData[8],
-                                'organ_id' => $organization->id,
-                                'verified' => 1,
-                                'password' => Hash::make('students'),
-                                'language' => 'EN',
-                                'timezone' => 'Africa/Lagos',
-                                'created_at' => time()
-                            ]);
-                        DB::commit();
-                    }catch(\Exception $e) {
-                        //throw $th;
-                        DB::rollBack();
-                    }
+            }
+            
+            fclose($file); //Close after reading
+            
+            $j = 0;
+            // dd($importData_arr);
+            foreach($importData_arr as $importData) {
+                $j++;
+                try{
+                    DB::beginTransaction();
+                        User::create([
+                            'full_name' => $importData[1],
+                            'matric_no' => $importData[2],
+                            'level' => $importData[3],
+                            'semester' => $importData[4],
+                            'mobile' => $importData[5],
+                            'email' => $importData[6],
+                            'role_name' => 'user',
+                            'role_id' => 1,
+                            'organ_id' => $organization->id,
+                            'verified' => 1,
+                            'password' => Hash::make('students'),
+                            'language' => 'EN',
+                            'timezone' => 'Africa/Lagos',
+                            'created_at' => time()
+                        ]);
+                    DB::commit();
+                }catch(\Exception $e) {
+                    //throw $th;
+                    DB::rollBack();
                 }
             }
-            fclose($file); //Close after reading
-            return response()->json(['message' => "$j records successfully uploaded"]);
+            
+            // return response()->json(['message' => "$j records successfully uploaded"]);
+            return redirect('/panel/manage/students/');
         }else{
             //no file was uploaded
             throw new \Exception('No file was uploaded', Response::HTTP_BAD_REQUEST);
