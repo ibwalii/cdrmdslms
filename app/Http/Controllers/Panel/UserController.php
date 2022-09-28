@@ -650,12 +650,12 @@ class UserController extends Controller
                 try{
                     DB::beginTransaction();
                         User::create([
-                            'full_name' => $importData[1],
-                            'matric_no' => $importData[2],
-                            'level' => $importData[3],
-                            'semester' => $importData[4],
-                            'mobile' => $importData[5],
-                            'email' => $importData[6],
+                            'full_name' => $importData[0],
+                            'matric_no' => $importData[1],
+                            'level' => $importData[2],
+                            'semester' => $importData[3],
+                            'mobile' => $importData[4],
+                            'email' => $importData[5],
                             'role_name' => 'user',
                             'role_id' => 1,
                             'organ_id' => $organization->id,

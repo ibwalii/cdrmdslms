@@ -33,6 +33,9 @@
                 @enderror
             </div>
         </div>
+        <div class="mt-6 col-4">
+            <a href="{{ ('/../../../assets/students_sample_template.csv/') }}">Click to download sample file</a>
+        </div>
         
     </form>
 
