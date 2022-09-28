@@ -116,6 +116,7 @@ return [
     'remove' => 'Remove',
 
     'list' => 'List',
+    'bulk_upload' => 'Bulk Upload',
     'reservation' => 'Reservation',
     'my_reservation' => 'My reservations',
     'result' => 'Result',

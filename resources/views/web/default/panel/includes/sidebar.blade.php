@@ -111,6 +111,9 @@
                         <li class="mt-5 {{ (request()->is('panel/manage/students')) ? 'active' : '' }}">
                             <a href="/panel/manage/students">{{ trans('public.list') }}</a>
                         </li>
+                        <li class="mt-5 {{ (request()->is('panel/manage/students/bulk_upload')) ? 'active' : '' }}">
+                            <a href="/panel/manage/students/bulk_upload">{{ trans('public.bulk_upload') }}</a>
+                        </li>
                     </ul>
                 </div>
             </li>

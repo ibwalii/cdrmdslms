@@ -21,6 +21,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
@@ -551,6 +552,143 @@ class UserController extends Controller
         }
 
         abort(404);
+    }
+    
+    public function bulkUpload($user_type)
+    {
+        $valid_type = ['instructors', 'students'];
+        $organization = auth()->user();
+
+        if ($organization->isOrganization() and in_array($user_type, $valid_type)) {
+
+            $packageType = $user_type == 'instructors' ? 'instructors_count' : 'students_count';
+            $userPackage = new UserPackage();
+            $userAccountLimited = $userPackage->checkPackageLimit($packageType);
+
+            if ($userAccountLimited) {
+                session()->put('registration_package_limited', $userAccountLimited);
+
+                return redirect()->back();
+            }
+
+            $categories = Category::where('parent_id', null)
+                ->with('subCategories')
+                ->get();
+
+            $userLanguages = getGeneralSettings('user_languages');
+            if (!empty($userLanguages) and is_array($userLanguages)) {
+                $userLanguages = getLanguages($userLanguages);
+            }
+
+            $data = [
+                'pageTitle' => trans('public.bulk_upload') . ' ' . trans('quiz.' . $user_type),
+                'new_user' => true,
+                'user_type' => $user_type,
+                'user' => $organization,
+                'categories' => $categories,
+                'organization_id' => $organization->id,
+                'userLanguages' => $userLanguages,
+                'currentStep' => 1,
+            ];
+
+            return view(getTemplate() . '.panel.setting.bulk_upload', $data);
+        }
+
+        abort(404);
+    }
+
+    public function storeBulkUpload(Request $request, $user_type)
+    {
+        $organization = auth()->user();
+        $file = $request->file('bulk_upload');
+
+        if($file){
+            $filename = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension(); //Get extension of uploaded file
+            $tempPath = $file->getRealPath();
+            $fileSize = $file->getSize(); //Get size of uploaded file in bytes
+        
+            //Check for file extension and size
+            $this->checkUploadedFileProperties($extension, $fileSize);
+        
+            //Where uploaded file will be stored on the server 
+            $location = 'uploads'; //Created an "uploads" folder for that
+        
+            // Upload file
+            $file->move($location, $filename);
+        
+            // In case the uploaded file path is to be stored in the database 
+            $filepath = public_path($location . "/" . $filename);
+        
+            // Reading file
+            $file = fopen($filepath, "r");
+            $importData_arr = array(); // Read through the file and store the contents as an array
+            $i = 0;
+        
+            //Read the contents of the uploaded file 
+            while (($filedata = fgetcsv($file, 1000, ",")) !== FALSE) 
+            {
+                $num = count($filedata);
+            
+                // Skip first row (Remove below comment if you want to skip the first row)
+                if($i == 0) {
+                    $i++;
+                    continue;
+                }
+                for($c = 0; $c < $num; $c++) {
+                    $importData_arr[$i][] = $filedata[$c];
+                }
+                $i++;
+
+                $j = 0;
+                foreach($importData_arr as $importData) {
+                    $j++;
+                    try{
+                        DB::beginTransaction();
+                            User::create([
+                                'full_name' => $importData[1],
+                                'role_name' => $importData[2],
+                                'role_id' => $importData[3],
+                                'matric_no' => $importData[4],
+                                'level' => $importData[5],
+                                'semester' => $importData[6],
+                                'mobile' => $importData[7],
+                                'email' => $importData[8],
+                                'organ_id' => $organization->id,
+                                'verified' => 1,
+                                'password' => Hash::make('students'),
+                                'language' => 'EN',
+                                'timezone' => 'Africa/Lagos',
+                                'created_at' => time()
+                            ]);
+                        DB::commit();
+                    }catch(\Exception $e) {
+                        //throw $th;
+                        DB::rollBack();
+                    }
+                }
+            }
+            fclose($file); //Close after reading
+            return response()->json(['message' => "$j records successfully uploaded"]);
+        }else{
+            //no file was uploaded
+            throw new \Exception('No file was uploaded', Response::HTTP_BAD_REQUEST);
+        }
+    }
+
+    public function checkUploadedFileProperties($extension, $fileSize)
+    {
+        $valid_extension = array("csv", "xlsx"); //Only want csv and excel files
+        $maxFileSize = 2097152; // Uploaded file size limit is 2mb
+    
+        if(in_array(strtolower($extension), $valid_extension)) {
+            if($fileSize <= $maxFileSize) {
+            }else{
+                throw new \Exception('No file was uploaded', Response::HTTP_REQUEST_ENTITY_TOO_LARGE); //413 error
+            }
+        }else{
+            throw new \Exception('Invalid file extension', Response::HTTP_UNSUPPORTED_MEDIA_TYPE); //415 error
+        }
     }
 
     public function storeUser(Request $request, $user_type)

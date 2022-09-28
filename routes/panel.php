@@ -259,6 +259,8 @@ Route::group(['namespace' => 'Panel', 'prefix' => 'panel', 'middleware' => ['imp
         Route::get('/{user_type}', 'UserController@manageUsers');
         Route::get('/{user_type}/new', 'UserController@createUser');
         Route::post('/{user_type}/new', 'UserController@storeUser');
+        Route::get('/{user_type}/bulk_upload', 'UserController@bulkUpload');
+        Route::post('/{user_type}/bulk_upload', 'UserController@storeBulkUpload');
         Route::get('/{user_type}/{user_id}/edit', 'UserController@editUser');
         Route::get('/{user_type}/{user_id}/edit/step/{step?}', 'UserController@editUser');
         Route::get('/{user_type}/{user_id}/delete', 'UserController@deleteUser');
