@@ -49,7 +49,72 @@ class WebinarController extends Controller
 
         return view(getTemplate() . '.panel.webinar.index', $data);
     }
+    
+    public function addStudents($id)
+    {
+        $valid_type = ['instructors', 'students'];
+        $organization = auth()->user();
+        $course_id = $id;
 
+        $students = User::select('id', 'full_name')->where('role_name', 'user')->where('organ_id', $organization->id)->where('status', 'active')->get();
+        
+        $webinar = Webinar::where('id', $course_id)->first();
+
+        $data = [
+            'pageTitle' => trans('webinars.webinars_list_page_title'),
+            'organization' => $organization,
+            'students' => $students,
+            'webinar' => $webinar,
+            'course_id' => $id,
+        ];
+        
+        return view(getTemplate() . '.panel.webinar.add-students', $data);
+
+        abort(404);
+    }
+    
+    public function addStudentsToCourse(Request $request)
+    {
+        $rules = [
+            'course_id' => 'required',
+            'student_id' => 'required',
+            'creator_id' => 'required',
+        ];
+
+        $this->validate($request, $rules);
+        
+        $data = Array(
+            'student_id' => $request->student_id,
+        );
+        
+        $creator_id = $request->creator_id;
+        $webinar_id = $request->course_id;
+        $created_at = time();
+        
+        if($students = $data['student_id']){
+            for($x=0; $x<count($students); $x++){
+                
+                $check_record = Sale::where('webinar_id', $webinar_id)->where('seller_id', $creator_id)->where('buyer_id', $data['student_id'][$x])->count();
+                
+                if($check_record == 0){
+                    $student_add = new Sale;
+                    
+                    $student_add['webinar_id'] = $webinar_id;
+                    $student_add['seller_id'] = $creator_id;
+                    $student_add['buyer_id'] = $data['student_id'][$x];
+                    $student_add['type'] = 'webinar';
+                    $student_add['amount'] = 0;
+                    $student_add['created_at'] = $created_at;
+                    $student_add->save();
+                    
+                }
+                
+
+            }
+        }
+        
+        return redirect()->route('webinar-home');
+    }
 
     public function invitations(Request $request)
     {
@@ -387,88 +452,6 @@ class WebinarController extends Controller
         return redirect($url);
     }
 
-    public function addStudents($id)
-    {
-        $valid_type = ['instructors', 'students'];
-        $organization = auth()->user();
-        $course_id = $id;
-
-        if ($organization->isOrganization() and in_array($user_type, $valid_type)) {
-            if ($user_type == 'instructors') {
-                $query = $organization->getOrganizationTeachers();
-            } else {
-                $query = $organization->getOrganizationStudents();
-            }
-
-            $activeCount = deepClone($query)->where('status', 'active')->count();
-            $verifiedCount = deepClone($query)->where('verified', true)->count();
-            $inActiveCount = deepClone($query)->where('status', 'inactive')->count();
-
-            $from = $request->get('from', null);
-            $to = $request->get('to', null);
-            $name = $request->get('name', null);
-            $email = $request->get('email', null);
-            $level = $request->get('level', null);
-            $type = request()->get('type', null);
-
-            if (!empty($from) and !empty($to)) {
-                $from = strtotime($from);
-                $to = strtotime($to);
-
-                $query->whereBetween('created_at', [$from, $to]);
-            } else {
-                if (!empty($from)) {
-                    $from = strtotime($from);
-
-                    $query->where('created_at', '>=', $from);
-                }
-
-                if (!empty($to)) {
-                    $to = strtotime($to);
-
-                    $query->where('created_at', '<', $to);
-                }
-            }
-
-            if (!empty($name)) {
-                $query->where('full_name', 'like', "%$name%");
-            }
-
-            if (!empty($email)) {
-                $query->where('email', $email);
-            }
-
-            if (!empty($type)) {
-                if (in_array($type, ['active', 'inactive'])) {
-                    $query->where('status', $type);
-                } elseif ($type == 'verified') {
-                    $query->where('verified', true);
-                }
-            }
-            
-            if (!empty($level)) {
-                $query->where('level', $level);
-            }
-
-            $users = $query->orderBy('created_at', 'desc')
-                ->paginate(10);
-
-            $data = [
-                'pageTitle' => trans('public.' . $user_type),
-                'user_type' => $user_type,
-                'organization' => $organization,
-                'users' => $users,
-                'activeCount' => $activeCount,
-                'inActiveCount' => $inActiveCount,
-                'verifiedCount' => $verifiedCount,
-            ];
-
-            return view(getTemplate() . '.panel.webinar.add-student', $data);
-        }
-
-        abort(404);
-    }
-
     public function edit(Request $request, $id, $step = 1)
     {
         $user = auth()->user();
@@ -769,7 +752,8 @@ class WebinarController extends Controller
             ]);
         }
 
-        unset($data['_token'],
+        unset(
+            $data['_token'],
             $data['current_step'],
             $data['draft'],
             $data['get_next'],

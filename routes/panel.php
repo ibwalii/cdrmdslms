@@ -20,12 +20,13 @@ Route::group(['namespace' => 'Panel', 'prefix' => 'panel', 'middleware' => ['imp
 
     Route::group(['prefix' => 'webinars'], function () {
         Route::group(['middleware' => 'user.not.access'], function () {
-            Route::get('/', 'WebinarController@index');
+            Route::get('/', 'WebinarController@index')->name('webinar-home');
             Route::get('/new', 'WebinarController@create');
             Route::get('/invitations', 'WebinarController@invitations');
             Route::post('/store', 'WebinarController@store');
             Route::get('/{id}/step/{step?}', 'WebinarController@edit');
             Route::get('/{id}/add-students', 'WebinarController@addStudents');
+            Route::post('add-students-to-course', 'WebinarController@addStudentsToCourse')->name('add-students-to-course');
             Route::get('/{id}/edit', 'WebinarController@edit')->name('panel_edit_webinar');
             Route::post('/{id}/update', 'WebinarController@update');
             Route::get('/{id}/delete', 'WebinarController@destroy');
