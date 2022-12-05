@@ -131,7 +131,7 @@
 
                                                 <a href="/panel/webinars/{{ $webinar->id }}/edit" class="webinar-actions d-block mt-10">{{ trans('public.edit') }}</a>
                                                 
-                                                <a href="/panel/webinars/{{ $webinar->id }}/edit" class="webinar-actions d-block mt-10">Add Students</a>
+                                                <a href="/panel/webinars/{{ $webinar->id }}/add-students" class="webinar-actions d-block mt-10">Add Students</a>
 
                                                 @if($webinar->isWebinar())
                                                     <a href="/panel/webinars/{{ $webinar->id }}/step/4" class="webinar-actions d-block mt-10">{{ trans('public.sessions') }}</a>

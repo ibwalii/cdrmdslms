@@ -387,6 +387,88 @@ class WebinarController extends Controller
         return redirect($url);
     }
 
+    public function addStudents($id)
+    {
+        $valid_type = ['instructors', 'students'];
+        $organization = auth()->user();
+        $course_id = $id;
+
+        if ($organization->isOrganization() and in_array($user_type, $valid_type)) {
+            if ($user_type == 'instructors') {
+                $query = $organization->getOrganizationTeachers();
+            } else {
+                $query = $organization->getOrganizationStudents();
+            }
+
+            $activeCount = deepClone($query)->where('status', 'active')->count();
+            $verifiedCount = deepClone($query)->where('verified', true)->count();
+            $inActiveCount = deepClone($query)->where('status', 'inactive')->count();
+
+            $from = $request->get('from', null);
+            $to = $request->get('to', null);
+            $name = $request->get('name', null);
+            $email = $request->get('email', null);
+            $level = $request->get('level', null);
+            $type = request()->get('type', null);
+
+            if (!empty($from) and !empty($to)) {
+                $from = strtotime($from);
+                $to = strtotime($to);
+
+                $query->whereBetween('created_at', [$from, $to]);
+            } else {
+                if (!empty($from)) {
+                    $from = strtotime($from);
+
+                    $query->where('created_at', '>=', $from);
+                }
+
+                if (!empty($to)) {
+                    $to = strtotime($to);
+
+                    $query->where('created_at', '<', $to);
+                }
+            }
+
+            if (!empty($name)) {
+                $query->where('full_name', 'like', "%$name%");
+            }
+
+            if (!empty($email)) {
+                $query->where('email', $email);
+            }
+
+            if (!empty($type)) {
+                if (in_array($type, ['active', 'inactive'])) {
+                    $query->where('status', $type);
+                } elseif ($type == 'verified') {
+                    $query->where('verified', true);
+                }
+            }
+            
+            if (!empty($level)) {
+                $query->where('level', $level);
+            }
+
+            $users = $query->orderBy('created_at', 'desc')
+                ->paginate(10);
+
+            $data = [
+                'pageTitle' => trans('public.' . $user_type),
+                'user_type' => $user_type,
+                'organization' => $organization,
+                'users' => $users,
+                'activeCount' => $activeCount,
+                'inActiveCount' => $inActiveCount,
+                'verifiedCount' => $verifiedCount,
+            ];
+
+            return view(getTemplate() . '.panel.webinar.add-student', $data);
+        }
+
+        abort(404);
+    }
+
     public function edit(Request $request, $id, $step = 1)
     {
         $user = auth()->user();
