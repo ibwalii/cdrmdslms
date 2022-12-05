@@ -130,12 +130,14 @@
 
 
                                                 <a href="/panel/webinars/{{ $webinar->id }}/edit" class="webinar-actions d-block mt-10">{{ trans('public.edit') }}</a>
+                                                
+                                                <a href="/panel/webinars/{{ $webinar->id }}/edit" class="webinar-actions d-block mt-10">Add Students</a>
 
                                                 @if($webinar->isWebinar())
-                                                    <a href="/panel/webinars/{{ $webinar->id }}/step/3" class="webinar-actions d-block mt-10">{{ trans('public.sessions') }}</a>
+                                                    <a href="/panel/webinars/{{ $webinar->id }}/step/4" class="webinar-actions d-block mt-10">{{ trans('public.sessions') }}</a>
                                                 @endif
 
-                                                <a href="/panel/webinars/{{ $webinar->id }}/step/3" class="webinar-actions d-block mt-10">{{ trans('public.files') }}</a>
+                                                <a href="/panel/webinars/{{ $webinar->id }}/step/4" class="webinar-actions d-block mt-10">{{ trans('public.files') }}</a>
 
 
                                                 @if($authUser->id == $webinar->teacher_id or $authUser->id == $webinar->creator_id)
