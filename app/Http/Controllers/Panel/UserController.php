@@ -920,6 +920,18 @@ class UserController extends Controller
         return response()->json([], 422);
     }
 
+    public function createAssignment()
+    {
+
+        $data = [
+                'pageTitle' => trans('panel.create_assignment'),
+        ];
+            
+        return view(getTemplate() . '.panel.assignment.create', $data);
+
+        abort(404);
+    }
+
     public function offlineToggle(Request $request)
     {
         $user = auth()->user();

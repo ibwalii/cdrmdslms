@@ -271,6 +271,16 @@ Route::group(['namespace' => 'Panel', 'prefix' => 'panel', 'middleware' => ['imp
         Route::get('/{user_type}', 'UserController@manageUsers');
     });
 
+    //Assignment
+    Route::group(['prefix' => 'assignment'], function () {
+        Route::get('/', 'UserController@assignment');
+        Route::get('/create', 'UserController@createAssignment');
+        Route::post('/store', 'UserController@storeAssignment');
+        Route::get('/{id}/edit', 'UserController@editAssignment');
+        Route::post('/{id}/update', 'UserController@updateAssignment');
+        Route::get('/{id}/delete', 'UserController@destroyAssignment');
+    });
+
     Route::group(['prefix' => 'rewards'], function () {
         Route::get('/', 'RewardController@index');
         Route::post('/exchange', 'RewardController@exchange');

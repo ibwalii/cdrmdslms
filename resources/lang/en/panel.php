@@ -10,6 +10,7 @@ return [
 
     'new_users' => 'New users',
     'user' => 'User',
+    'create_assignment' => 'Create Assignment',
     'users' => 'Users',
     'followers' => 'Followers',
     'following' => 'Following',

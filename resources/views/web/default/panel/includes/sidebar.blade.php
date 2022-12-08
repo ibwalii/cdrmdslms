@@ -206,6 +206,44 @@
             </div>
         </li> --}}
 
+        <!-- Assignment  -->
+        <li class="sidenav-item {{ (request()->is('panel/assignment') or request()->is('panel/assignment/*')) ? 'sidenav-item-active' : '' }}">
+            <a class="d-flex align-items-center" data-toggle="collapse" href="#assignmentCollapse" role="button" aria-expanded="false" aria-controls="assignmentCollapse">
+                <span class="sidenav-item-icon mr-10">
+                    @include('web.default.panel.includes.sidebar_icons.quizzes')
+                </span>
+                <span class="font-14 text-dark-blue font-weight-500">Assignment</span>
+            </a>
+
+            <div class="collapse {{ (request()->is('panel/assignment/create') or request()->is('panel/assignment/create/*')) ? 'show' : '' }}" id="assignmentCollapse">
+                <ul class="sidenav-item-collapse">
+                    @if($authUser->isTeacher())
+                        <li class="mt-5 {{ (request()->is('assignment/create')) ? 'active' : '' }}">
+                            <a href="panel/assignment/create">Create Assignment</a>
+                        </li>
+                        <li class="mt-5">
+                            <a href="#">All Assignment</a>
+                        </li>
+                    @endif
+
+                    @if($authUser->isUser())
+                        <li class="mt-5">
+                            <a href="#">Check Assignment</a>
+                        </li>
+
+                        <li class="mt-5">
+                            <a href="#">Submit Assignment</a>
+                        </li>
+
+                        <li class="mt-5">
+                            <a href="#">Assignment Result</a>
+                        </li>
+                    @endif
+                </ul>
+            </div>
+        </li>
+        <!-- End of Assignment  -->
+
         <li class="sidenav-item {{ (request()->is('panel/quizzes') or request()->is('panel/quizzes/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#quizzesCollapse" role="button" aria-expanded="false" aria-controls="quizzesCollapse">
                 <span class="sidenav-item-icon mr-10">
