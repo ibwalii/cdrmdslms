@@ -5,39 +5,71 @@
 @endpush
 
 @section('content')
-    
-    <form enctype="multipart/form-data" method="post" id="userSettingForm" class="mt-30" action="{{ (!empty($new_user)) ? '/panel/manage/'. $user_type .'/bulk_upload' : '/panel/setting' }}">
-        {{ csrf_field() }}
-
-        @if(!empty($organization_id))
-            <input type="hidden" name="organization_id" value="{{ $organization_id }}">
-            <input type="hidden" id="userId" name="user_id" value="{{ $user->id }}">
-        @endif
-
-        <div class="form-group mt-15 col-4">
-            <label class="input-label">{{ trans('public.bulk_upload') }}</label>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <button type="button" class="input-group-text panel-file-manager" data-input="bulk_upload" data-preview="holder">
-                        <i data-feather="arrow-up" width="18" height="18" class="text-white"></i>
-                    </button>
-                </div>
-                <input type="file" name="bulk_upload" id="bulk_upload" class="form-control @error('bulk_upload')  is-invalid @enderror" placeholder=""/>
-                @error('bulk_upload')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
+    <div class="bg-white py-10">
+        @if(count($courses) > 0)
+            <div class="col-12 col-md-6 col-lg-6">
+                <h2 class="mt-20 ml-15">Add Assignment</h2>
+                <form enctype="multipart/form-data" method="post" class="mt-30" action="#}">
+                    {{ csrf_field() }}
+            
+                    @if(!empty($organization_id))
+                        <input type="hidden" name="organization_id" value="{{ $organization_id }}">
+                        <input type="hidden" id="userId" name="user_id" value="{{ $user->id }}">
+                    @endif
+                    
+                    <div class="form-group mt-15 col-6">
+                        <label class="input-label">Course Name</label>
+                        <select name="course_name" id="" class="form-control @error('level')  is-invalid @enderror">
+                            <option></option>
+                            @foreach($courses as $course)
+                                <option value="{{ $course->id }}">{{ $course->slug }}</option>
+                            @endforeach
+                        </select>
+                        @error('course_name')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+            
+                    <div class="form-group mt-15 col-6">
+                        <label class="input-label">Upload Question</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button type="button" class="input-group-text panel-file-manager" data-input="upload_question" data-preview="holder">
+                                    <i data-feather="arrow-up" width="18" height="18" class="text-white"></i>
+                                </button>
+                            </div>
+                            <input type="file" name="upload_question" id="upload_question" class="form-control @error('upload_question')  is-invalid @enderror" placeholder=""/>
+                            
+                            @error('upload_question')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                    
+                    <div class="form-group mt-15 col-6">
+                        <label class="input-label">Submission Date</label>
+                        <input type="date" name="submission_date" class="form-control">
+                        @error('submission_date')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    
+                
+                </form>
             </div>
-        </div>
-        <div class="mt-6 col-4">
-            <a href="{{ ('/../../../assets/students_sample_template.csv/') }}">Click to download sample file</a>
-        </div>
         
-    </form>
-
-    <div class="create-webinar-footer d-flex align-items-center justify-content-between mt-20 pt-15 border-top">
-        <button type="button" id="saveData" class="btn btn-sm btn-primary ml-15">Upload File</button>
+            <div class="create-webinar-footer d-flex align-items-center justify-content-between mt-20 pt-15 border-top">
+                <button type="button" id="saveData" class="btn btn-sm btn-primary ml-20">Create Assignment</button>
+            </div>
+        @else
+            <h2 class="mt-20 ml-15">No Course Assigned to you yet!</h2>
+        @endif
     </div>
 @endsection
 

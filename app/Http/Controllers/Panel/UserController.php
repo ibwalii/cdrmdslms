@@ -16,6 +16,7 @@ use App\Models\Role;
 use App\Models\UserMeta;
 use App\Models\UserOccupation;
 use App\Models\UserZoomApi;
+use App\Models\Webinar;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -923,8 +924,13 @@ class UserController extends Controller
     public function createAssignment()
     {
 
+        $teacher_id = auth()->user()->id;
+        
+        $courses = Webinar::select('id', 'slug')->where('teacher_id', $teacher_id)->orderby('slug', 'asc')->get();
+        
         $data = [
-                'pageTitle' => trans('panel.create_assignment'),
+            'pageTitle' => trans('panel.create_assignment'),
+            'courses' => $courses,
         ];
             
         return view(getTemplate() . '.panel.assignment.create', $data);
