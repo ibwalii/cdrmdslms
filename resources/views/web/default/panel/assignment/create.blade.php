@@ -9,7 +9,7 @@
         @if(count($courses) > 0)
             <div class="col-12 col-md-6 col-lg-6">
                 <h2 class="mt-20 ml-15">Add Assignment</h2>
-                <form enctype="multipart/form-data" method="post" class="mt-30" action="#}">
+                <form enctype="multipart/form-data" method="post" class="mt-30" action="/panel/assignment/store">
                     {{ csrf_field() }}
             
                     @if(!empty($organization_id))
@@ -18,14 +18,24 @@
                     @endif
                     
                     <div class="form-group mt-15 col-6">
+                        <label class="input-label">Title</label>
+                        <input required type="text" name="title" class="form-control">
+                        @error('title')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    
+                    <div class="form-group mt-15 col-6">
                         <label class="input-label">Course Name</label>
-                        <select name="course_name" id="" class="form-control @error('level')  is-invalid @enderror">
+                        <select required name="course_id" id="" class="form-control @error('level')  is-invalid @enderror">
                             <option></option>
                             @foreach($courses as $course)
                                 <option value="{{ $course->id }}">{{ $course->slug }}</option>
                             @endforeach
                         </select>
-                        @error('course_name')
+                        @error('course_id')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -40,9 +50,9 @@
                                     <i data-feather="arrow-up" width="18" height="18" class="text-white"></i>
                                 </button>
                             </div>
-                            <input type="file" name="upload_question" id="upload_question" class="form-control @error('upload_question')  is-invalid @enderror" placeholder=""/>
+                            <input required type="file" name="question_path" id="upload_question" class="form-control @error('upload_question')  is-invalid @enderror" placeholder=""/>
                             
-                            @error('upload_question')
+                            @error('question_path')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -52,7 +62,7 @@
                     
                     <div class="form-group mt-15 col-6">
                         <label class="input-label">Submission Date</label>
-                        <input type="date" name="submission_date" class="form-control">
+                        <input required type="date" name="submission_date" class="form-control">
                         @error('submission_date')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -60,12 +70,10 @@
                         @enderror
                     </div>
                     
-                
+                    <div class="create-webinar-footer d-flex align-items-center justify-content-between mt-20 pt-15 border-top">
+                        <input value="Create Assignment" type="submit" class="btn btn-sm btn-primary ml-20">
+                    </div>
                 </form>
-            </div>
-        
-            <div class="create-webinar-footer d-flex align-items-center justify-content-between mt-20 pt-15 border-top">
-                <button type="button" id="saveData" class="btn btn-sm btn-primary ml-20">Create Assignment</button>
             </div>
         @else
             <h2 class="mt-20 ml-15">No Course Assigned to you yet!</h2>

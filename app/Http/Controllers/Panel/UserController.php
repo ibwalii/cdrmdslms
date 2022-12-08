@@ -17,6 +17,7 @@ use App\Models\UserMeta;
 use App\Models\UserOccupation;
 use App\Models\UserZoomApi;
 use App\Models\Webinar;
+use App\Models\Assignment;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -920,6 +921,11 @@ class UserController extends Controller
 
         return response()->json([], 422);
     }
+    
+    public function assignment()
+    {
+        dd('Hit');
+    }
 
     public function createAssignment()
     {
@@ -936,6 +942,44 @@ class UserController extends Controller
         return view(getTemplate() . '.panel.assignment.create', $data);
 
         abort(404);
+    }
+    
+    public function storeAssignment(Request $request)
+    {
+        
+        $data = $request->validate([
+            'title' => 'required|:unique:assignments,title',
+            'course_id' => ['required'],
+            'question_path' => ['required', 'mimes:pdf,doc,docx,txt,jpeg,jpg,png,'],
+            'submission_date' => ['required'],
+        ]);
+        
+        if($file = $request->file('question_path')){
+            $path = time().str_replace(' ', '', $file->getClientOriginalName());
+            $file->move('assets/assignment/questions/', $path);
+            
+            if($data['question_path'] != null){
+                if(file_exists(public_path().'/assets/assignment/questions/'.$data['question_path'])){
+                    unlink(public_path().'/assets/assignment/questions/'.$data['question_path']);
+                }
+            }
+        }
+        
+        try{
+            Assignment::create([
+                'title' => $data['title'],
+                'course_id' => $data['course_id'],
+                'question_path' => $path,
+                'submission_date' => $data['submission_date'],
+                'teacher_id' => auth()->user()->id,
+            ]);
+
+            return redirect()->route('all-assignments'); 
+            
+        }catch(Expection $e){
+            abort(404);
+        }
+        
     }
 
     public function offlineToggle(Request $request)

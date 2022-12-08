@@ -273,7 +273,7 @@ Route::group(['namespace' => 'Panel', 'prefix' => 'panel', 'middleware' => ['imp
 
     //Assignment
     Route::group(['prefix' => 'assignment'], function () {
-        Route::get('/', 'UserController@assignment');
+        Route::get('/', 'UserController@assignment')->name('all-assignments');
         Route::get('/create', 'UserController@createAssignment');
         Route::post('/store', 'UserController@storeAssignment');
         Route::get('/{id}/edit', 'UserController@editAssignment');
