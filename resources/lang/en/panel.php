@@ -11,6 +11,7 @@ return [
     'new_users' => 'New users',
     'user' => 'User',
     'create_assignment' => 'Create Assignment',
+    'all_assignment' => 'Assignments',
     'users' => 'Users',
     'followers' => 'Followers',
     'following' => 'Following',

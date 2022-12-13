@@ -222,7 +222,7 @@
                             <a href="/panel/assignment/create">Create Assignment</a>
                         </li>
                         <li class="mt-5">
-                            <a href="#">All Assignment</a>
+                            <a href="{{ route('all-assignments') }}">All Assignment</a>
                         </li>
                     @endif
 

@@ -924,7 +924,20 @@ class UserController extends Controller
     
     public function assignment()
     {
-        dd('Hit');
+        $user = auth()->user();
+
+        if ($user->isUser()) {
+            abort(404);
+        }
+
+        $assignments = Assignment::where('teacher_id', $user->id)->orderby('id', 'desc')->paginate('10');
+
+        $data = [
+            'pageTitle' => trans('panel.all_assignment'),
+            'assignments' => $assignments,
+        ];
+
+        return view(getTemplate() . '.panel.assignment.index', $data);
     }
 
     public function createAssignment()
